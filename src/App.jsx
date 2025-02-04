@@ -8,6 +8,7 @@ import AboutUs from './components/Aboutus';
 import Doctors from './components/Doctors';
 import Appointment from './components/Appointment';
 import DoctorDetails from './components/DoctorsDetails';
+import Contacts from './components/Contacts';
 const Layout = ({ children }) => {
   return (
     <div>
@@ -32,7 +33,7 @@ const App = () => {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/doctor-details/:disease" element={<DoctorDetails />} />
-          <Route path="/contact" element={<div>Contact Page</div>} />
+          <Route path="/contact" element={<Contacts />} />
         </Routes>
       </Layout>
     </Router>
