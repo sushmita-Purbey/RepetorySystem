@@ -34,12 +34,12 @@ const LoginPage = () => {
 
   return (
     <div className="min-h-screen bg-cover bg-center" style={{ backgroundImage: "url('public/back 1.png')" }}>
-      <div className="flex items-center justify-center min-h-screen bg-blue-700 bg-opacity-10">
-        <div className="max-w-md  w-full bg-blue-300 opacity-90 p-8 rounded-xl shadow-lg">
+      <div className="flex items-center justify-center min-h-screen bg-blue-900 bg-opacity-10">
+        <div className="max-w-md  w-full bg-blue-400 opacity-[95%] px-4 py-20 rounded-xl shadow-lg">
           <h2 className="text-center text-3xl font-semibold font-italic text-gray-900">Login</h2>
 
           {/* Role Selection */}
-          <div className="flex justify-center space-x-4 mt-4">
+          <div className="flex justify-center space-x-4 mt-8">
             <button
               className={`${
                 role === "doctor" ? "bg-blue-600 text-white" : "bg-gray-200 text-gray-800"
@@ -105,12 +105,12 @@ const LoginPage = () => {
 
           {/* Forgot Password and Create Account Links */}
           <div className="flex justify-between mt-4">
-            <Link to="/forgot-password" className="text-sm text-green-600 hover:text-green-700 font-semibold">
+            <Link to="/forgotpassword" className="text-sm text-green-700 hover:text-green-800 font-semibold">
               Forgot Password?
             </Link>
             <div className="text-sm text-gray-600">
               <span>Don't have an account? </span>
-              <Link to="/create" className="text-green-600 hover:text-green-700 font-semibold">
+              <Link to="/create" className="text-green-800 hover:text-green-900 font-semibold">
                 Create one
               </Link>
             </div>

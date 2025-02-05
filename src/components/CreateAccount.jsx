@@ -51,8 +51,11 @@ const CreateAccount = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center  bg-gray-50  px-4 sm:px-6 lg:px-8">
-      <div className="max-w-md w-full space-y-4 bg-white p-8 rounded-lg shadow-lg">
+    <div 
+      className="min-h-screen flex items-center justify-center bg-cover bg-center px-4 sm:px-6 lg:px-8"
+      style={{ backgroundImage: "url('public/back 1.png')" }} // Replace with your image URL
+    >
+      <div className="max-w-md w-full space-y-4 bg-blue-300 opacity-90 p-8 rounded-lg shadow-lg">
         <h2 className="text-center text-3xl font-extrabold text-gray-900">
           Create an Account
         </h2>
@@ -85,7 +88,7 @@ const CreateAccount = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-t-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-t-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 bg-transparent bg-opacity-50"
                 placeholder="Full Name"
               />
             </div>
@@ -98,7 +101,7 @@ const CreateAccount = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 bg-transparent bg-opacity-50"
                 placeholder="Email Address"
               />
             </div>
@@ -111,7 +114,7 @@ const CreateAccount = () => {
                 value={formData.password}
                 onChange={handleChange}
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 bg-transparent bg-opacity-50"
                 placeholder="Password"
               />
             </div>
@@ -124,7 +127,7 @@ const CreateAccount = () => {
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-b-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-b-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 bg-transparent bg-opacity-50"
                 placeholder="Confirm Password"
               />
             </div>
@@ -138,8 +141,8 @@ const CreateAccount = () => {
                   value={formData.adminCode}
                   onChange={handleChange}
                   required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
-                  placeholder="Mobile no."
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 bg-transparent bg-opacity-50"
+                  placeholder="Admin Code"
                 />
               </div>
             )}
@@ -154,7 +157,7 @@ const CreateAccount = () => {
                     value={formData.phone}
                     onChange={handleChange}
                     required
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 bg-transparent bg-opacity-50"
                     placeholder="Phone Number"
                   />
                 </div>
@@ -167,7 +170,7 @@ const CreateAccount = () => {
                     value={formData.address}
                     onChange={handleChange}
                     required
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 sm:text-sm"
+                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 bg-transparent bg-opacity-50"
                     placeholder="Address"
                   />
                 </div>
@@ -184,19 +187,17 @@ const CreateAccount = () => {
             </button>
             {/* Statement for Existing Users */}
             <div className="text-center mt-6">
-            <p className="text-sm text-gray-600">
+              <p className="text-sm text-gray-600">
                 Already have an account?{" "}
                 <Link to="/login" className="text-green-600 hover:text-green-700 font-semibold">
-                Log in here
+                  Log in here
                 </Link>
-            </p>
+              </p>
             </div>
           </div>
         </form>
-        <button className=" absolute bottom-10  right-10 bg-blue-900 block rounded px-3 py-1" onClick={handleBack}>Go Back</button>
-
+        <button className=" absolute bottom-10 right-10 bg-blue-900 block rounded px-3 py-1" onClick={handleBack}>Go Back</button>
       </div>
-
     </div>
   );
 };
