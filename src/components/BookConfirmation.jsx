@@ -3,7 +3,7 @@ import { useLocation, useNavigate } from "react-router-dom";
 const BookConfirmation = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const { doctorName, formData } = location.state || {};
+  const { formData } = location.state || {};
 
   if (!formData) {
     return <p className="text-center text-red-500">No booking details found. Please book an appointment first.</p>;
@@ -16,15 +16,7 @@ const BookConfirmation = () => {
     >
       <h1 className="text-3xl font-bold text-blue-800 mb-6">Booking Confirmation</h1>
 
-      {/* Top: Doctor's Image and Name */}
-      <div className="flex flex-col items-center mb-6">
-        <img
-          src="/allergies.jpg"
-          alt="Doctor"
-          className="rounded-lg w-32 h-32 mb-4" // Reduced size of the image
-        />
-        <p className="text-xl font-bold text-blue-600">{doctorName}</p>
-      </div>
+      
 
       {/* Form Section (2x2 grid layout) */}
       <div className="bg-white bg-opacity-80 backdrop-blur-lg p-8 rounded shadow-lg grid grid-cols-2 gap-6 w-full max-w-xl">

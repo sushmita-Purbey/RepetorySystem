@@ -13,6 +13,8 @@ import Authority from './components/Authority';
 import CreateAccount from './components/CreateAccount';
 import LoginPage from './components/LoginPage';
 import ForgotPassword from './components/ForgotPassword';
+import BookAppointment from './components/BookAppointment';
+import BookConfirmation from './components/BookConfirmation';
 
 // Layout with Header, Navigation, and Footer
 const Layout = ({ children }) => {
@@ -48,6 +50,8 @@ const App = () => {
         <Route path="/doctors" element={<Layout><Doctors /></Layout>} />
         <Route path="/about" element={<Layout><AboutUs /></Layout>} />
         <Route path="/appointment" element={<Layout><Appointment /></Layout>} />
+        <Route path="/book-appointment" element={<Layout><BookAppointment /></Layout>} />
+        <Route path="/booking-confirmation" element={<Layout><BookConfirmation /></Layout>} />
         <Route path="/doctor-details/:disease" element={<Layout><DoctorDetails /></Layout>} />
         <Route path="/contact" element={<Layout><Contacts /></Layout>} />
         <Route path="/authority" element={<Layout><Authority /></Layout>} />
