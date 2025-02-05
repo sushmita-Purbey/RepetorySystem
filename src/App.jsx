@@ -2,15 +2,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Header from "./components/Header";
 import Navigation from "./components/Navigation";
 import Home from "./components/Home";
-
-import Footer from './components/Footer';// Layout component to wrap all pages
+import Footer from './components/Footer'; // Layout component to wrap all pages
 import AboutUs from './components/Aboutus';
 import Doctors from './components/Doctors';
 import Appointment from './components/Appointment';
 import DoctorDetails from './components/DoctorsDetails';
 import Contacts from './components/Contacts';
-import BookAppointment from './components/BookAppointment';
-import BookConfirmation from './components/BookConfirmation';
 const Layout = ({ children }) => {
   return (
     <div>
@@ -24,6 +21,11 @@ const Layout = ({ children }) => {
   );
 };
 
+// Simple layout for pages without Header, Navigation, and Footer (e.g., LoginPage, WelcomePage, and CreateAccount)
+const SimpleLayout = ({ children }) => {
+  return <div>{children}</div>;
+};
+
 const App = () => {
   return (
     <Router>
@@ -35,8 +37,6 @@ const App = () => {
           <Route path="/about" element={<AboutUs />} />
           <Route path="/appointment" element={<Appointment />} />
           <Route path="/doctor-details/:disease" element={<DoctorDetails />} />
-          <Route path="/book-appointment/:doctorName" element={<BookAppointment />} />
-          <Route path="/booking-confirmation" element={<BookConfirmation />} />
           <Route path="/contact" element={<Contacts />} />
         </Routes>
       </Layout>

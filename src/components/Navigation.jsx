@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Navigation = () => {
   const [isSearching, setIsSearching] = useState(false);
@@ -7,6 +7,12 @@ const Navigation = () => {
 
   const handleSearchToggle = () => {
     setIsSearching(!isSearching);
+  };
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    // Redirect to login page when button is clicked
+    navigate('/login');
   };
 
   const handleSearch = (e) => {
@@ -81,7 +87,9 @@ const Navigation = () => {
       </div>
 
       {/* Right Section: Create Account Button */}
-      <button className="text-black text-sm rounded-3xl bg-blue-200 px-4 py-2 hover:bg-blue-100 transition duration-200">
+      <button
+       onClick={handleClick}
+      className="text-black text-sm rounded-3xl bg-blue-200 px-4 py-2 hover:bg-blue-100 transition duration-200">
         Create Account
       </button>
     </nav>
