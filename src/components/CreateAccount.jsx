@@ -2,14 +2,11 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
 const CreateAccount = () => {
-  // State to manage role (admin/user)
-  const [role, setRole] = useState("user");
   const navigate = useNavigate();
-  const handleBack = () => {
-    navigate("/");  // If no history, redirect to Home
-  };
-
-  // Form state for Admin and User
+ 
+    const handleBack = () => {
+      navigate("/");  // If no history, redirect to Home
+    };
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -17,7 +14,6 @@ const CreateAccount = () => {
     confirmPassword: "",
     phone: "",
     address: "",
-    adminCode: "", // Admin-only field
   });
 
   // Handle changes in form inputs
@@ -46,39 +42,23 @@ const CreateAccount = () => {
       confirmPassword: "",
       phone: "",
       address: "",
-      adminCode: "",
     });
+
+    navigate("/login"); // Redirect to login page after successful account creation
   };
 
   return (
-    <div 
-      className="min-h-screen flex items-center justify-center bg-cover bg-center px-4 sm:px-6 lg:px-8"
-      style={{ backgroundImage: "url('public/back 1.png')" }} // Replace with your image URL
+    <div
+      className="min-h-screen flex items-center justify-center bg-cover bg-left px-4 sm:px-6 lg:px-8"
+      style={{ backgroundImage:"url('public/front-view-female-researcher-with-medical-mask-vaccine 1.png')" }} // Replace with your image URL
     >
-      <div className="max-w-md w-full space-y-4 bg-blue-300 opacity-90 p-8 rounded-lg shadow-lg">
-        <h2 className="text-center text-3xl font-extrabold text-gray-900">
-          Create an Account
-        </h2>
-        <div className="flex justify-center space-x-4 mt-2">
-          <button
-            className={`${
-              role === "user" ? "bg-blue-900 text-white" : "bg-gray-200 text-gray-800"
-            } w-32 py-2 rounded-md`}
-            onClick={() => setRole("user")}
-          >
-            User
-          </button>
-          <button
-            className={`${
-              role === "admin" ? "bg-blue-900 text-white" : "bg-gray-200 text-gray-800"
-            } w-32 py-2 rounded-md`}
-            onClick={() => setRole("admin")}
-          >
-            Admin
-          </button>
-        </div>
+      <div className="absolute inset-0 bg-blue-800 opacity-20"></div> {/* Dark overlay for better contrast */}
+      
+      <div className=" absolute top-20 max-w-md w-full space-y-6 p-6 rounded-2xl shadow-2xl bg-blue-500 bg-opacity-20 backdrop-blur-md">
+        <h2 className="text-center text-3xl font-extrabold text-black">Create Your Account</h2>
         <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
           <div className="rounded-md shadow-sm -space-y-px">
+            {/* Name Input */}
             <div>
               <label htmlFor="name" className="sr-only">Full Name</label>
               <input
@@ -88,10 +68,12 @@ const CreateAccount = () => {
                 value={formData.name}
                 onChange={handleChange}
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-t-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 bg-transparent bg-opacity-50"
+                className="appearance-none mt-3 rounded-md relative block w-full px-3 py-2 border border-white   rounded-md text-gray-900 placeholder-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-white  bg-transparent"
                 placeholder="Full Name"
               />
             </div>
+
+            {/* Email Input */}
             <div>
               <label htmlFor="email" className="sr-only">Email Address</label>
               <input
@@ -101,10 +83,12 @@ const CreateAccount = () => {
                 value={formData.email}
                 onChange={handleChange}
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 bg-transparent bg-opacity-50"
+                className="appearance-none mt-3 rounded-md relative block w-full px-3 py-2 border border-white   rounded-md text-gray-900 placeholder-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-white  bg-transparent"
                 placeholder="Email Address"
               />
             </div>
+
+            {/* Password Input */}
             <div>
               <label htmlFor="password" className="sr-only">Password</label>
               <input
@@ -114,10 +98,12 @@ const CreateAccount = () => {
                 value={formData.password}
                 onChange={handleChange}
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 bg-transparent bg-opacity-50"
+                className="appearance-none mt-3 rounded-md relative block w-full px-3 py-2 border border-white   rounded-md text-gray-900 placeholder-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-white  bg-transparent"
                 placeholder="Password"
               />
             </div>
+
+            {/* Confirm Password Input */}
             <div>
               <label htmlFor="confirmPassword" className="sr-only">Confirm Password</label>
               <input
@@ -127,76 +113,64 @@ const CreateAccount = () => {
                 value={formData.confirmPassword}
                 onChange={handleChange}
                 required
-                className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-b-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 bg-transparent bg-opacity-50"
+                className="appearance-none mt-3 rounded-md relative block w-full px-3 py-2 border border-white   rounded-md text-gray-900 placeholder-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-white  bg-transparent"
                 placeholder="Confirm Password"
               />
             </div>
-            {role === "admin" && (
-              <div>
-                <label htmlFor="adminCode" className="sr-only">Admin Code</label>
-                <input
-                  type="text"
-                  id="adminCode"
-                  name="adminCode"
-                  value={formData.adminCode}
-                  onChange={handleChange}
-                  required
-                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 bg-transparent bg-opacity-50"
-                  placeholder="Admin Code"
-                />
-              </div>
-            )}
-            {role === "user" && (
-              <>
-                <div>
-                  <label htmlFor="phone" className="sr-only">Phone Number</label>
-                  <input
-                    type="text"
-                    id="phone"
-                    name="phone"
-                    value={formData.phone}
-                    onChange={handleChange}
-                    required
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 bg-transparent bg-opacity-50"
-                    placeholder="Phone Number"
-                  />
-                </div>
-                <div>
-                  <label htmlFor="address" className="sr-only">Address</label>
-                  <input
-                    type="text"
-                    id="address"
-                    name="address"
-                    value={formData.address}
-                    onChange={handleChange}
-                    required
-                    className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 rounded-md text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-green-500 focus:border-green-500 bg-transparent bg-opacity-50"
-                    placeholder="Address"
-                  />
-                </div>
-              </>
-            )}
+
+            {/* Phone Number Input */}
+            <div>
+              <label htmlFor="phone" className="sr-only">Phone Number</label>
+              <input
+                type="text"
+                id="phone"
+                name="phone"
+                value={formData.phone}
+                onChange={handleChange}
+                required
+                className="appearance-none mt-3 rounded-md relative block w-full px-3 py-2 border border-white   rounded-md text-gray-900 placeholder-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-white  bg-transparent"
+                placeholder="Phone Number"
+              />
+            </div>
+
+            {/* Address Input */}
+            <div>
+              <label htmlFor="address" className="sr-only">Address</label>
+              <input
+                type="text"
+                id="address"
+                name="address"
+                value={formData.address}
+                onChange={handleChange}
+                required
+                className="appearance-none mt-3  rounded-md relative block w-full px-3 py-2 border border-white   rounded-md text-gray-900 placeholder-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-white  bg-transparent"
+                placeholder="Address"
+              />
+            </div>
           </div>
 
+          {/* Submit Button */}
           <div>
             <button
               type="submit"
-              className="group relative w-full py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-blue-900 hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500"
+              className="group  relative w-full py-3 px-4 border border-transparent text-lg font-medium rounded-md text-black bg-blue-700 hover:bg-blue-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               Create Account
             </button>
-            {/* Statement for Existing Users */}
-            <div className="text-center mt-6">
-              <p className="text-sm text-gray-600">
-                Already have an account?{" "}
-                <Link to="/login" className="text-green-600 hover:text-green-700 font-semibold">
-                  Log in here
-                </Link>
-              </p>
-            </div>
           </div>
         </form>
-        <button className=" absolute bottom-10 right-10 bg-blue-900 block rounded px-3 py-1" onClick={handleBack}>Go Back</button>
+
+        {/* Login Link */}
+        <div className="text-center mt-6">
+          <p className="text-sm text-black">
+            Already have an account?{" "}
+            <Link to="/login" className="text-blue-700 hover:text-blue-900 font-semibold">
+              Log in here
+            </Link>
+          </p>
+        </div>
+        <button className=" absolute top-[550px] transform active:scale-95 transition-transform   left-[850px] bg-blue-600 font-semibold h-10 w-[100px] rounded px-3 py-1" onClick={handleBack}>Go Back</button>
+
       </div>
     </div>
   );

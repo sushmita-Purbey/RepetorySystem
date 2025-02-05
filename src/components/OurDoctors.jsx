@@ -95,33 +95,58 @@ const OurDoctors = () => {
       </div>
 
       {/* Additional Cards with Black Lines */}
-      <div className="my-20 flex bg-blue-800">
-        {/* Extra Cards */}
-        {[
-          { title: "REPERTORY HOMEOPATHIC PRACTITIONER", desc: ["Leading the way in Homeopathic", "Excellence, Trusted Care."] },
-          { title: "Important Links", desc: ["Appointment", "Doctors", "Services", "About Us"] },
-          { title: "Contact Us", desc: ["Call: +91 566-785-5623", "Email: fildineesoe@gmail.com", "Address: 0123 some place", "Some country"] },
-        ].map((item, index) => (
-          <div key={index} className="p-4 text-gray-500 flex flex-col bg-blue-800 min-h-[350px] w-1/4">
-            <p className="font-bold text-2xl text-gray-400 p-7">{item.title}</p>
-            {item.desc.map((line, i) => (
-              <p key={i} className="ml-8 text-gray-400 text-xl">{line}</p>
-            ))}
-          </div>
+      <div className="bg-[#BFD2F8] text-gray-500 flex p-4" style={{ maxHeight: "400px" }}>
+  <div className="grid   sm:grid-cols-2 lg:grid-cols-4 gap-4">
+    {/* Extra Cards */}
+    {[
+      {
+        title: "REPERTORY HOMEOPATHIC PRACTITIONER",
+        desc: ["Leading the way in Homeopathic", "Excellence, Trusted Care."],
+        icon: "🏠", // Home icon for illustration
+      },
+      {
+        title: "Important Links",
+        desc: ["Appointment", "Doctors", "Services", "About Us"],
+        icon: "🔗", // Link icon for illustration
+      },
+      {
+        title: "Contact Us",
+        desc: [
+          "Call: +91 566-785-5623",
+          "Email: fildineesoe@gmail.com",
+          "Address: 0123 some place",
+          "Some country",
+        ],
+        icon: "📞", // Phone icon for illustration
+      },
+    ].map((item, index) => (
+      <div
+        key={index}
+        className="flex flex-col items-center bg-[#16255b] p-4 text-gray-200 rounded-lg shadow-lg hover:bg-[#1f2b6c] transition-all duration-300"
+      >
+        <div className="text-3xl mb-2">{item.icon}</div>
+        <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
+        {item.desc.map((line, i) => (
+          <p key={i} className="text-sm text-center mb-1">{line}</p>
         ))}
-
-        {/* Newsletter */}
-        <div className="bg-blue-800 p-10 text-gray-500 flex flex-col min-h-[350px] w-1/4">
-          <p className="font-bold text-2xl text-gray-400">Newsletter</p>
-          <button className="mt-4 bg-blue-400 text-black py-2 px-6 w-full hover:bg-blue-600 transition duration-300">
-            <input
-              type="email"
-              placeholder="Enter your email address"
-              className="bg-transparent outline-none text-black placeholder-gray-300 w-full text-center"
-            />
-          </button>
-        </div>
       </div>
+    ))}
+
+    {/* Newsletter */}
+    <div className="flex flex-col bg-[#16255b] p-4 text-gray-200 rounded-lg shadow-lg col-span-1 sm:col-span-2 lg:col-span-1 hover:bg-[#1f2b6c] transition-all duration-300">
+      <div className="text-3xl mb-2">📧</div>
+      <h3 className="font-semibold text-lg mb-2">Newsletter</h3>
+      <input
+        type="email"
+        placeholder="Enter your email address"
+        className="w-full p-2 mb-3 rounded-lg bg-transparent border-2 border-gray-300 text-black placeholder-gray-500 focus:outline-none focus:border-blue-400 text-sm"
+      />
+      <button className="bg-blue-400 text-black py-1 px-4 w-full rounded-lg hover:bg-blue-600 transition-all duration-300">
+        Subscribe
+      </button>
+    </div>
+  </div>
+              </div>
 
       {/* Gray Line */}
       <hr className="border-gray-500 my-6 mx-12" />

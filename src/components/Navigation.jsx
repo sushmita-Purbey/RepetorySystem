@@ -25,11 +25,11 @@ const Navigation = () => {
   };
 
   return (
-    <nav className="bg-blue-800 text-white p-4 flex justify-between items-center">
+    <nav className="bg-[#1F2B6C] text-white p-4 flex justify-between items-center">
       {/* Left Section: Navigation Links */}
       <ul className="flex gap-8 ml-6">
         <li>
-          <Link to="/" className="text-blue-200 hover:text-white transition duration-200">
+          <Link to="/home" className="text-blue-200 hover:text-white transition duration-200">
             Home
           </Link>
         </li>

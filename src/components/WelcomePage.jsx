@@ -46,10 +46,7 @@ const WelcomePage = () => {
                         <img className='absolute bottom-0 left-[60px]   h-[430px]' src="public/race-women-looking-young-horizontal-standing1-transformed (1).png" alt=""  />
                         <img className='absolute bottom-0 left-[480px] h-[435px]' src="public/race-women-looking-young-horizontal-standing2-transformed.png" alt=""  />
                         <img className='absolute bottom-0 left-[900px] h-[410px]' src="public/race-women-looking-young-horizontal-standing3-transformed.png" alt=""  />
-                        <div className='absolute z-100 h-[9vh] w-[40vw] px-4 py-1 bg-[#6588C1] opacity-95 rounded-br-2xl bottom-5 left-[340px]'>
-                            <h1 className='text-white font-semibold text-lg px-[60px]'>Caring For Life</h1>
-                            <h1 className='font-semibold text-lg px-[130px] text-[#1F2B6C]'>Meet our Homeopathic physicians</h1>
-                        </div>
+                      
                         
                        
                     </div>
@@ -63,10 +60,12 @@ const WelcomePage = () => {
         </div>
                         <Link
                             to="/home"
-                            className=" absolute hover:scale-110  bottom-10 underline font-bold text-lg right-10  text-md font-semibold  py-1 px-2 "
+                            className=" absolute transform active:scale-95 transition-transform h-10 w-30 bg-blue-500 rounded-xl hover:bg-blue-600  bottom-10  font-semibold text-lg right-10  text-md font-semibold  py-1 px-6 "
                         >
-                            Skip →
+                            Skip
                         </Link>
+       
+                       
        </div>
     </div>
   );

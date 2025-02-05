@@ -13,6 +13,8 @@ import Authority from './components/Authority';
 import CreateAccount from './components/CreateAccount';
 import LoginPage from './components/LoginPage';
 import ForgotPassword from './components/ForgotPassword';
+import AdminDashboard from './components/AdminDashboard';
+import DoctorDashboard from './components/DoctorDashboard';
 
 // Layout with Header, Navigation, and Footer
 const Layout = ({ children }) => {
@@ -42,6 +44,8 @@ const App = () => {
         <Route path="/login" element={<SimpleLayout><LoginPage /></SimpleLayout>} />
         <Route path="/create" element={<SimpleLayout><CreateAccount /></SimpleLayout>} />
         <Route path="/forgotpassword" element={<SimpleLayout><ForgotPassword/></SimpleLayout>} />
+        <Route path="/admindashboard" element={<SimpleLayout><AdminDashboard/></SimpleLayout>} />
+        <Route path="/doctordashboard" element={<SimpleLayout><DoctorDashboard/></SimpleLayout>} />
         
         {/* All other routes will use the standard layout with Header and Footer */}
         <Route path="/home" element={<Layout><Home /></Layout>} />
