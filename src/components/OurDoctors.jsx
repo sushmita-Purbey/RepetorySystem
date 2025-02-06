@@ -27,7 +27,7 @@ const OurDoctors = () => {
               alt={doctor.name}
               className="w-full h-4/5 object-cover"
             />
-            <div className="bg-blue-300 p-4 w-full">
+            <div className="bg-[#BFD2F8] p-4 w-full">
               <p className="text-xl font-semibold text-blue-800">{doctor.name}</p>
               <p className="text-gray-600">{doctor.specialty}</p>
               <div className="flex gap-4 justify-center mt-4">
@@ -57,7 +57,7 @@ const OurDoctors = () => {
 
       {/* Contact Cards */}
       <div className="grid grid-cols-4 sm:grid-cols-2 lg:grid-cols-4 gap-14 mx-9 my-20 ml-14 mr-14">
-        <div className="bg-blue-300 p-10 rounded-lg text-gray-500 flex flex-col">
+        <div className="bg-[#BFD2F8] p-10 rounded-lg text-gray-500 flex flex-col">
           <FaPhoneAlt className="text-4xl mb-4" />
           <div className="text-start">
             <p className="font-bold text-2xl text-blue-800">EMERGENCY</p>
@@ -66,7 +66,7 @@ const OurDoctors = () => {
           </div>
         </div>
 
-        <div className="bg-blue-300 p-10 rounded-lg text-gray-500 shadow-lg flex flex-col">
+        <div className="bg-[#BFD2F8] p-10 rounded-lg text-gray-500 shadow-lg flex flex-col">
           <FaMapMarkerAlt className="text-4xl mb-4" />
           <div className="text-start">
             <p className="font-bold text-2xl text-blue-800">LOCATION</p>
@@ -84,7 +84,7 @@ const OurDoctors = () => {
           </div>
         </div>
 
-        <div className="bg-blue-300 p-10 rounded-lg text-gray-500 flex flex-col">
+        <div className="bg-[#BFD2F8] p-10 rounded-lg text-gray-500 flex flex-col">
           <FaRegClock className="text-4xl mb-4" />
           <div className="text-start">
             <p className="font-bold text-2xl text-blue-800">WORKING HOURS</p>
