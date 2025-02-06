@@ -13,13 +13,12 @@ import Authority from './components/Authority';
 import CreateAccount from './components/CreateAccount';
 import LoginPage from './components/LoginPage';
 import ForgotPassword from './components/ForgotPassword';
-<<<<<<< HEAD
+
 import DoctorsDashboard from './components/DoctorsDashboard';
 import AdminsDashboard from './components/AdminsDashboard';
-=======
 import BookAppointment from './components/BookAppointment';
 import BookConfirmation from './components/BookConfirmation';
->>>>>>> 837b15b676205251ce8f6f312e371da3066381f7
+
 
 // Layout with Header, Navigation, and Footer
 const Layout = ({ children }) => {
