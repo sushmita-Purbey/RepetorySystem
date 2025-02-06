@@ -80,10 +80,12 @@ const BookAppointment = () => {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-blue-100 p-6 bg-cover overflow-hidden h-full" style={{ backgroundImage: "url('/appoinbg.jpg')" }}>
-      <div className="flex w-full max-w-4xl h-full">
+    
+    <div className="min-h-screen flex items-center justify-center bg-blue-100 pl-28 bg-cover" style={{ backgroundImage: "url('/back 1.png')" }}>
+      
+      <div className="flex  max-w-xl">
         <div className="w-full max-w-sm p-6 bg-white bg-opacity-30 backdrop-blur-lg rounded-lg shadow-md">
-          <h1 className="text-3xl font-bold text-blue-800 text-left">Book an Appointment</h1>
+        <h1 className="text-3xl font-bold text-blue-800 text-left">Book an Appointment</h1>
           <p className="text-lg text-gray-700 my-4 text-left">
             You are booking an appointment with <strong>{doctorName}</strong>.
           </p>

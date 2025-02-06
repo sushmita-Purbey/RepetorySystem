@@ -53,7 +53,6 @@ const diseaseDescription = {
   "Nose Infection": "Nose infections, often caused by bacteria or viruses, lead to congestion, pain, and breathing difficulties."
 };
 
-
 const DoctorDetails = () => {
   const { disease } = useParams();
   const navigate = useNavigate();
@@ -62,7 +61,7 @@ const DoctorDetails = () => {
 
   const handleBookAppointment = (doctor) => {
     if (doctor.available) {
-      navigate(`/book-appointment/${doctor.name}`);
+      navigate(`/book-appointment`);
     } else {
       alert(`Sorry, ${doctor.name} is not available at the moment.`);
     }
@@ -70,7 +69,7 @@ const DoctorDetails = () => {
 
   return (
     <div 
-      className="min-h-screen relative"
+      className="min-h-screen flex justify-center items-center p-4"
       style={{
         backgroundImage: "url('/bghome.png')",
         backgroundSize: "cover",
@@ -78,16 +77,14 @@ const DoctorDetails = () => {
         backgroundAttachment: "fixed"
       }}
     >
-      <div className="absolute inset-0 backdrop-blur-sm bg-gray/30"></div>
-
-      <div className="relative p-6">
+      <div className="bg-white/90 p-6 rounded-xl shadow-lg max-w-3xl w-full">
         <h1 className="text-center text-3xl font-bold text-blue-800">{disease} Doctors</h1>
         <p className="text-center text-lg text-gray-800 my-4">{description}</p>
 
         {doctors.length > 0 ? (
           doctors.map((doctor, index) => (
             <div
-              className="group flex justify-between items-center p-6 bg-white/80 rounded-xl shadow-lg my-4 transition-all duration-300 hover:bg-gray-300 hover:shadow-xl hover:scale-105 cursor-pointer"
+              className="group flex flex-col items-center text-center p-6 bg-white/80 rounded-xl shadow-md my-4 transition-all duration-300"
               key={index}
             >
               <img 
@@ -95,39 +92,35 @@ const DoctorDetails = () => {
                 alt={doctor.name} 
                 className="w-24 h-24 rounded-full transition-transform duration-300 group-hover:scale-110" 
               />
-              <div className="ml-6 flex-grow">
-                <h3 className="text-xl font-semibold group-hover:text-blue-800 transition-colors duration-300">
-                  {doctor.name}
-                </h3>
-                <p className="group-hover:text-gray-700 transition-colors duration-300 mb-4">
-                  {doctor.description}
-                </p>
-                <div className="flex justify-between items-center">
-                  <div className="flex gap-4">
-                    <a href={`https://facebook.com/${doctor.name}`} target="_blank" rel="noopener noreferrer">
-                      <FaFacebookF className="w-10 h-10 rounded-full bg-blue-800 text-white p-2 transition-all duration-300 hover:scale-110 hover:bg-blue-600" />
-                    </a>
-                    <a href={`https://instagram.com/${doctor.name}`} target="_blank" rel="noopener noreferrer">
-                      <FaInstagram className="w-10 h-10 rounded-full bg-blue-800 text-white p-2 transition-all duration-300 hover:scale-110 hover:bg-blue-600" />
-                    </a>
-                    <a href={`https://twitter.com/${doctor.name}`} target="_blank" rel="noopener noreferrer">
-                      <FaTwitter className="w-10 h-10 rounded-full bg-blue-800 text-white p-2 transition-all duration-300 hover:scale-110 hover:bg-blue-600" />
-                    </a>
-                  </div>
-                  <button 
-                    className={`px-4 py-2 rounded-3xl transition duration-300 
-                      ${doctor.available ? "bg-blue-200 hover:bg-blue-400 hover:text-white cursor-pointer" : "bg-gray-400 text-gray-800 cursor-not-allowed"}`}
-                    onClick={() => handleBookAppointment(doctor)}
-                    disabled={!doctor.available}
-                  >
-                    {doctor.available ? "Book Appointment" : "Not Available"}
-                  </button>
-                </div>
+              <h3 className="text-xl font-semibold mt-4 group-hover:text-blue-800 transition-colors duration-300">
+                {doctor.name}
+              </h3>
+              <p className="text-gray-700 group-hover:text-gray-900 transition-colors duration-300 my-2">
+                {doctor.description}
+              </p>
+              <div className="flex gap-4 my-4">
+                <a href={`https://facebook.com/${doctor.name}`} target="_blank" rel="noopener noreferrer">
+                  <FaFacebookF className="w-8 h-8 rounded-full bg-blue-800 text-white p-2 transition-all duration-300 hover:scale-110 hover:bg-blue-600" />
+                </a>
+                <a href={`https://instagram.com/${doctor.name}`} target="_blank" rel="noopener noreferrer">
+                  <FaInstagram className="w-8 h-8 rounded-full bg-blue-800 text-white p-2 transition-all duration-300 hover:scale-110 hover:bg-blue-600" />
+                </a>
+                <a href={`https://twitter.com/${doctor.name}`} target="_blank" rel="noopener noreferrer">
+                  <FaTwitter className="w-8 h-8 rounded-full bg-blue-800 text-white p-2 transition-all duration-300 hover:scale-110 hover:bg-blue-600" />
+                </a>
               </div>
+              <button 
+                className={`px-4 py-2 rounded-full transition duration-300 
+                  ${doctor.available ? "bg-blue-500 hover:bg-blue-700 text-white" : "bg-gray-400 text-gray-800 cursor-not-allowed"}`}
+                onClick={() => handleBookAppointment(doctor)}
+                disabled={!doctor.available}
+              >
+                {doctor.available ? "Book Appointment" : "Not Available"}
+              </button>
             </div>
           ))
         ) : (
-          <div className="text-center p-8 bg-white/80 rounded-xl">
+          <div className="text-center p-8 bg-white/80 rounded-xl shadow-md">
             <p>No doctors available for this disease.</p>
           </div>
         )}
