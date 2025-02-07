@@ -78,7 +78,7 @@ const OurDoctors = () => {
         <div className="bg-blue-800 p-10 rounded-lg text-gray-500 shadow-lg flex flex-col">
           <FaEnvelope className="text-4xl mb-4" />
           <div className="text-start">
-            <p className="font-bold text-2xl text-blue-400">EMAIL</p>
+            <p className="font-bold text-2xl text-white">EMAIL</p>
             <p className="text-gray-400">Paruluniversity.ac.in</p>
             <p className="text-gray-400">Paruluniversity.ac.in</p>
           </div>

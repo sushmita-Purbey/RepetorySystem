@@ -13,13 +13,19 @@ import Authority from './components/Authority';
 import CreateAccount from './components/CreateAccount';
 import LoginPage from './components/LoginPage';
 import ForgotPassword from './components/ForgotPassword';
-<<<<<<< HEAD
+
 import DoctorsDashboard from './components/DoctorsDashboard';
 import AdminsDashboard from './components/AdminsDashboard';
-=======
+
 import BookAppointment from './components/BookAppointment';
 import BookConfirmation from './components/BookConfirmation';
->>>>>>> 837b15b676205251ce8f6f312e371da3066381f7
+import Overview from './sidenavAdmin/Overview';
+import AppointmentAdmin from './sidenavAdmin/AppointmentAdmin';
+import ReportPage from './sidenavAdmin/ReportPage';
+import SettingsPage from './sidenavAdmin/SettingsPage';
+
+
+
 
 // Layout with Header, Navigation, and Footer
 const Layout = ({ children }) => {
@@ -51,6 +57,16 @@ const App = () => {
         <Route path="/forgotpassword" element={<SimpleLayout><ForgotPassword/></SimpleLayout>} />
         <Route path="/doctordashboard" element={<SimpleLayout><DoctorsDashboard/></SimpleLayout>} />
         <Route path="/admindashboard" element={<SimpleLayout><AdminsDashboard/></SimpleLayout>} />
+        <Route path="/overview" element={<SimpleLayout><Overview/></SimpleLayout>} />
+        <Route path="/reportpage" element={<SimpleLayout><ReportPage/></SimpleLayout>} />
+        <Route path="/settingsadmin" element={<SimpleLayout><SettingsPage/></SimpleLayout>} />
+        <Route path="/appointmentadmin" element={<SimpleLayout><AppointmentAdmin/></SimpleLayout>} />
+    
+        {/* <Route path="/appointments" element={<Appointments />} />
+        <Route path="/calendars" element={<Calendars />} />
+        <Route path="/reports" element={<Reports />} />
+        <Route path="/settings" element={<Settings />} />
+        <Route path="/help-center" element={<HelpCenter />} /> */}
       
         
         {/* All other routes will use the standard layout with Header and Footer */}
