@@ -16,6 +16,7 @@ import ForgotPassword from './components/ForgotPassword';
 
 import DoctorsDashboard from './components/DoctorsDashboard';
 import AdminsDashboard from './components/AdminsDashboard';
+<<<<<<< HEAD
 
 import BookAppointment from './components/BookAppointment';
 import BookConfirmation from './components/BookConfirmation';
@@ -28,6 +29,10 @@ import ContactSupport from './sidenavAdmin/ContactSupport';
 import Chatbot from './sidenavAdmin/Chatbot';
 
 
+=======
+import BookAppointment from './components/BookAppointment';
+import BookConfirmation from './components/BookConfirmation';
+>>>>>>> 58b3cee1a497cf84ac8e0d186f5662c2fee1cfb2
 
 
 // Layout with Header, Navigation, and Footer
