@@ -34,7 +34,10 @@ const AdminDashSidebar = () => {
           <Link to="/settingsadmin" className="hover:bg-gray-800 p-2 block rounded">Settings</Link>
         </li>
         <li className="mb-4">
-          <Link to="/help-center" className="hover:bg-gray-800 p-2 block rounded">Help Center</Link>
+          <Link to="/helpcenter" className="hover:bg-gray-800 p-2 block rounded">Help Center</Link>
+        </li>
+        <li className="mb-4">
+          <Link to="/home" className="hover:bg-gray-800 p-2 block rounded">Go to Home</Link>
         </li>
         <button
         onClick={handleLogout}

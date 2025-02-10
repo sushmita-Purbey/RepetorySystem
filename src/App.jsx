@@ -23,6 +23,9 @@ import Overview from './sidenavAdmin/Overview';
 import AppointmentAdmin from './sidenavAdmin/AppointmentAdmin';
 import ReportPage from './sidenavAdmin/ReportPage';
 import SettingsPage from './sidenavAdmin/SettingsPage';
+import HelpCenter from './sidenavAdmin/HelpCenter';
+import ContactSupport from './sidenavAdmin/ContactSupport';
+import Chatbot from './sidenavAdmin/Chatbot';
 
 
 
@@ -60,7 +63,11 @@ const App = () => {
         <Route path="/overview" element={<SimpleLayout><Overview/></SimpleLayout>} />
         <Route path="/reportpage" element={<SimpleLayout><ReportPage/></SimpleLayout>} />
         <Route path="/settingsadmin" element={<SimpleLayout><SettingsPage/></SimpleLayout>} />
+        <Route path="/helpcenter" element={<SimpleLayout><HelpCenter/></SimpleLayout>} />
+        <Route path="/chatbot" element={<SimpleLayout><Chatbot/></SimpleLayout>} />
         <Route path="/appointmentadmin" element={<SimpleLayout><AppointmentAdmin/></SimpleLayout>} />
+        
+        
     
         {/* <Route path="/appointments" element={<Appointments />} />
         <Route path="/calendars" element={<Calendars />} />
@@ -79,6 +86,7 @@ const App = () => {
         <Route path="/doctor-details/:disease" element={<Layout><DoctorDetails /></Layout>} />
         <Route path="/contact" element={<Layout><Contacts /></Layout>} />
         <Route path="/authority" element={<Layout><Authority /></Layout>} />
+        <Route path="/contactsupport" element={<Layout><ContactSupport/></Layout>} />
       </Routes>
     </Router>
   );
