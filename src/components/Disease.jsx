@@ -1,3 +1,4 @@
+import { useNavigate } from "react-router-dom";
 
 
 const Disease = () => {
@@ -12,6 +13,12 @@ const Disease = () => {
     { name: "High blood pressure", img: "/img8.png" },
     { name: "Nose Infection", img: "/img9.png" }
   ];
+  const navigate = useNavigate(); // Initialize the navigate function
+
+  const bookAppointmentbtn = () => {
+    navigate("/appointment"); // Navigate to the appointment page
+  };
+
 
   return (
     <div>
@@ -43,7 +50,7 @@ const Disease = () => {
   <div className="relative flex items-center justify-around p-14">
     {/* Left Section */}
     <div className="w-3/5 p-6 rounded-lg text-white">
-      <h1 className="text-3xl font-bold mb-4 text-blue-800">Book the Appointment</h1>
+      <button onClick={bookAppointmentbtn} className="text-3xl font-bold mb-4 text-blue-800">Book the Appointment</button>
       <p className="text-xl text-black leading-7">
         Take the first step toward a healthier, more balanced life with homeopathy. Whether you're seeking relief from chronic conditions, managing stress, or simply looking to enhance your overall well-being, homeopathy offers a safe and natural approach tailored to your unique needs.
         <br />
@@ -55,9 +62,12 @@ const Disease = () => {
 
     {/* Right Section */}
     <div className="w-1/4 flex justify-center relative">
-      <button className="bg-blue-800 text-white font-semibold py-4 w-[75%] h-14 rounded hover:bg-blue-400 transition duration-300">
-        Book the Appointment
-      </button>
+    <button
+      onClick={bookAppointmentbtn}
+      className="bg-blue-800 text-white py-2 px-4 rounded-lg hover:bg-blue-600 transition duration-300"
+    >
+      Book Appointment
+    </button>
     </div>
   </div>
 </div>
