@@ -50,7 +50,8 @@ const LoginPage = () => {
     >
       <div className="flex items-center justify-center min-h-screen bg-blue-900 bg-opacity-20 inset-0">
         <div className="absolute top-50 max-w-md w-full space-y-6 p-6 rounded-2xl shadow-2xl bg-blue-500 bg-opacity-30 backdrop-blur-md">
-          <h2 className="text-center text-3xl font-semibold font-italic text-black mt-6">Login</h2>
+          <h2 className="text-center text-3xl font-semibold font-italic text-black mt-2">Login</h2>
+          <h5 className="text-center text-xl text-gray-900  font-semibold text-black ">({role} login)</h5>
 
           {/* Role Selection */}
           <div className="flex justify-center space-x-4 mt-8">
@@ -65,10 +66,10 @@ const LoginPage = () => {
             <button
               className={`${
                 role === "admin" ? "bg-blue-300 text-black font-semibold" : "bg-gray-200 text-black"
-              } w-32 py-2 rounded-md transition duration-200 hover:bg-blue-600`}
+              } w-32 py-2 rounded-md font-semibold transition duration-200 hover:bg-blue-600`}
               onClick={() => setRole("admin")}
             >
-              Admin
+              User
             </button>
           </div>
 

@@ -74,7 +74,7 @@ const AboutUs = () => {
         <div className="absolute inset-0 bg-gray-900 opacity-80"></div>
 
         {/* Text Content (on top of overlay) */}
-        <div className="absolute inset-0 flex flex-col justify-center items-center text-gray-400 text-center px-6 transition duration-300 hover:text-gray-800">
+        <div className="absolute inset-0 flex flex-col justify-center items-center text-gray-400 text-center px-6 transition duration-300 hover:text-gray-100">
           
           <img
           src="/quote.png"

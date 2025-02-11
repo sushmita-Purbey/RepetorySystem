@@ -47,6 +47,11 @@ const CreateAccount = () => {
     navigate("/login"); // Redirect to login page after successful account creation
   };
 
+  const handleGoogleLogin = () => {
+    console.log("Google Login Clicked");
+    // Integrate Firebase Auth or OAuth here
+  };
+
   return (
     <div
       className="min-h-screen flex items-center justify-center bg-cover bg-left px-4 sm:px-6 lg:px-8"
@@ -158,7 +163,16 @@ const CreateAccount = () => {
               Create Account
             </button>
           </div>
-        </form>
+          
+
+        </form> 
+          {/* Google Login Button */}
+          <div className="mt-4 flex flex-col items-center">
+          <button onClick={handleGoogleLogin} className="w-full flex items-center justify-center gap-2 py-3 px-4 border rounded-md font-semibold  text-black ">
+            <img src="https://w7.pngwing.com/pngs/882/225/png-transparent-google-logo-google-logo-google-search-icon-google-text-logo-business-thumbnail.png" alt="Google" className="w-6 h-6" />
+            Login with Google
+          </button>
+        </div>
 
         {/* Login Link */}
         <div className="text-center mt-6">
