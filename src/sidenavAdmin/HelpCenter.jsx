@@ -32,7 +32,7 @@ const HelpCenter = () => {
          <div className="flex flex-col h-screen">
             <AdminDashSidebar/>
         </div>
-    <div className="mx-auto flex-1 w-[1256px] h-screen mt-6   absolute top-0 right-0 ">
+    <div className="mx-auto flex-1 w-[1250px] h-screen mt-6   absolute top-0 right-0 ">
       <h2 className="text-2xl font-bold mb-4 text-blue-600 ">Help Center</h2>
       <p className="text-gray-600 mb-6">
         Find answers to your questions or contact support.

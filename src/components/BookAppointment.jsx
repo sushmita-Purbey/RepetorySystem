@@ -95,31 +95,55 @@ const BookAppointment = () => {
               <>
                 <label className="block mb-2 text-gray-700 text-sm">Your Name *</label>
                 <input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm" placeholder="Enter your name" />
-                {errors.name && <p className="text-red-500 text-xs">{errors.name}</p>}
+                {errors.name && <p className="text-blue-700 text-xs">{errors.name}</p>}
 
                 <label className="block mb-2 text-gray-700 text-sm">Age *</label>
                 <input type="number" name="age" value={formData.age} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm" placeholder="Enter your age" />
-                {errors.age && <p className="text-red-500 text-xs">{errors.age}</p>}
+                {errors.age && <p className="text-blue-700 text-xs">{errors.age}</p>}
 
                 <label className="block mb-2 text-gray-700 text-sm">Email *</label>
                 <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm" placeholder="Enter your email" />
-                {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
+                {errors.email && <p className="text-blue-700 text-xs">{errors.email}</p>}
               </>
             )}
 
             {step === 2 && (
               <>
-                <label className="block mb-2 text-gray-700 text-sm">Address *</label>
-                <input type="text" name="address" value={formData.address} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm" placeholder="Enter your address" />
-                {errors.address && <p className="text-red-500 text-xs">{errors.address}</p>}
+               <label className="block mb-2 text-gray-700 text-sm">Address *</label>
+<input type="text" name="address" value={formData.address} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm" placeholder="Enter your address" />
+{errors.address && <p className="text-blue-700 text-xs">{errors.address}</p>}
 
-                <label className="block mb-2 text-gray-700 text-sm">Appointment Date *</label>
-                <input type="date" name="date" value={formData.date} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm" />
-                {errors.date && <p className="text-red-500 text-xs">{errors.date}</p>}
+<label className="block mb-2 text-gray-700 text-sm">Appointment Date *</label>
+<input type="date" name="date" value={formData.date} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm" />
+{errors.date && <p className="text-blue-700 text-xs">{errors.date}</p>}
 
-                <label className="block mb-2 text-gray-700 text-sm">Reason for Visit (Optional)</label>
-                <textarea name="reason" value={formData.reason} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm" placeholder="Enter reason for visit (optional)"></textarea>
-                {errors.reason && <p className="text-red-500 text-xs">{errors.reason}</p>}
+<label className="block mb-2 text-gray-700 text-sm">Appointment Time *</label>
+<select name="time" value={formData.time} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm">
+    <option value="">Select Time</option>
+    <option value="9 AM">9 AM</option>
+    <option value="10 AM">10 AM</option>
+    <option value="11 AM">11 AM</option>
+    <option value="12 PM">12 PM</option>
+    <option value="1 PM">1 PM</option>
+    <option value="2 PM">2 PM</option>
+    <option value="3 PM">3 PM</option>
+    <option value="4 PM">4 PM</option>
+    <option value="5 PM">5 PM</option>
+</select>
+{errors.time && <p className="text-blue-700 text-xs">{errors.time}</p>}
+
+<label className="block mb-2 text-gray-700 text-sm">Appointment Type *</label>
+<select name="appointmentType" value={formData.appointmentType} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm">
+    <option value="">Select Appointment Type</option>
+    <option value="Online">Online Video Call</option>
+    <option value="Offline">Offline (In-Person)</option>
+</select>
+{errors.appointmentType && <p className="text-blue-700 text-xs">{errors.appointmentType}</p>}
+
+<label className="block mb-2 text-gray-700 text-sm">Reason for Visit (Optional)</label>
+<textarea name="reason" value={formData.reason} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm" placeholder="Enter reason for visit (optional)"></textarea>
+{errors.reason && <p className="text-blue-700 text-xs">{errors.reason}</p>}
+
               </>
             )}
 
