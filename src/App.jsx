@@ -26,6 +26,8 @@ import HelpCenter from './sidenavAdmin/HelpCenter';
 import ContactSupport from './sidenavAdmin/ContactSupport';
 import Chatbot from './sidenavAdmin/Chatbot';
 import BookAppointment from './components/BookAppointment';
+import DAppointment from './sideNavDoc/DAppointments';
+import DocOverview from './sideNavDoc/DocOverview';
 
 
 
@@ -60,12 +62,14 @@ const App = () => {
         <Route path="/forgotpassword" element={<SimpleLayout><ForgotPassword/></SimpleLayout>} />
         <Route path="/doctordashboard" element={<SimpleLayout><DoctorsDashboard/></SimpleLayout>} />
         <Route path="/admindashboard" element={<SimpleLayout><AdminsDashboard/></SimpleLayout>} />
-        <Route path="/overview" element={<SimpleLayout><Overview/></SimpleLayout>} />
+
+        
         <Route path="/reportpage" element={<SimpleLayout><ReportPage/></SimpleLayout>} />
         <Route path="/settingsadmin" element={<SimpleLayout><SettingsPage/></SimpleLayout>} />
         <Route path="/helpcenter" element={<SimpleLayout><HelpCenter/></SimpleLayout>} />
         <Route path="/chatbot" element={<SimpleLayout><Chatbot/></SimpleLayout>} />
         <Route path="/appointmentadmin" element={<SimpleLayout><AppointmentAdmin/></SimpleLayout>} />
+         <Route path="/appointment-doc" element={<SimpleLayout><DAppointment/></SimpleLayout>} /> 
         
         
     
