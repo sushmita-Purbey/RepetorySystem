@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 import { useState } from "react";
+=======
+
+>>>>>>> 47aec47d6630cd4414b3a6f1d6bf364f867e1886
 
 const DoctorsDashboard = () => {
   const [isEditing, setIsEditing] = useState(false);
