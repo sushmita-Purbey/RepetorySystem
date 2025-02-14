@@ -6,7 +6,7 @@ import PatientSummaryChart from "../DOCtorDashboard/PatientSummaryChart";
 import Sidebar from "../DOCtorDashboard/Sidebar";
 
 
-function DoctorsDashboard() {
+function DashboardNav() {
   return (
     <div className="flex  h-screen bg-gray-100">
       <Sidebar/>
@@ -24,4 +24,4 @@ function DoctorsDashboard() {
   );
 }
 
-export default DoctorsDashboard;
+export default DashboardNav;

@@ -26,8 +26,12 @@ import HelpCenter from './sidenavAdmin/HelpCenter';
 import ContactSupport from './sidenavAdmin/ContactSupport';
 import Chatbot from './sidenavAdmin/Chatbot';
 import BookAppointment from './components/BookAppointment';
-import DAppointment from './sideNavDoc/DAppointments';
-import DocOverview from './sideNavDoc/DocOverview';
+import PaymentPage from './DOCtorDashboard/PaymentPage';
+import DashboardNav from './DOCtorDashboard/DashboardNav';
+import DoctorSchedule from './DOCtorDashboard/DoctorSchedule';
+import PatientList from './DOCtorDashboard/PatientList';
+import AppointmentRequests from './DOCtorDashboard/AppointmentRequests';
+
 
 
 
@@ -62,14 +66,20 @@ const App = () => {
         <Route path="/forgotpassword" element={<SimpleLayout><ForgotPassword/></SimpleLayout>} />
         <Route path="/doctordashboard" element={<SimpleLayout><DoctorsDashboard/></SimpleLayout>} />
         <Route path="/admindashboard" element={<SimpleLayout><AdminsDashboard/></SimpleLayout>} />
+        <Route path="/docappointment" element={<SimpleLayout><AppointmentRequests/></SimpleLayout>} />
 
         
         <Route path="/reportpage" element={<SimpleLayout><ReportPage/></SimpleLayout>} />
         <Route path="/settingsadmin" element={<SimpleLayout><SettingsPage/></SimpleLayout>} />
         <Route path="/helpcenter" element={<SimpleLayout><HelpCenter/></SimpleLayout>} />
         <Route path="/chatbot" element={<SimpleLayout><Chatbot/></SimpleLayout>} />
+        <Route path="/payment" element={<SimpleLayout><PaymentPage/></SimpleLayout>} />
+        <Route path="/dashboard-nav" element={<SimpleLayout><DashboardNav/></SimpleLayout>} />
         <Route path="/appointmentadmin" element={<SimpleLayout><AppointmentAdmin/></SimpleLayout>} />
-         <Route path="/appointment-doc" element={<SimpleLayout><DAppointment/></SimpleLayout>} /> 
+        <Route path="/time-schedule" element={<SimpleLayout><DoctorSchedule/></SimpleLayout>} />
+        <Route path="/patient-list" element={<SimpleLayout><PatientList/></SimpleLayout>} />
+        
+
         
         
     
