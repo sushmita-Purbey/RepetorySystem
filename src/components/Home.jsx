@@ -6,7 +6,7 @@ const Home = () => {
     <>
       
       <motion.div
-        className="bg-cover bg-center w-full flex  items-start justify-start p-8 relative"
+        className="bg-cover bg-center w-full flex   items-start justify-start p-8 relative"
         style={{ height: "50vh", backgroundImage: "url('/bghome.png')" }}
         initial={{ opacity: 0 }}
         animate={{ opacity: 2 }}
@@ -14,13 +14,13 @@ const Home = () => {
       >
         {/* Animated Text Section */}
         <motion.div
-          className="text-left p-10"
+          className="text-left  p-10"
           initial={{ x: -30, opacity: 0 }}
           animate={{ x: 0, opacity: 1 }}
           transition={{ duration: 1, delay: 0.3 }}
         >
-          <h4 className="text-blue-400 text-2xl font-bold">CARING FOR <br />LIFE</h4>
-          <p className="text-3xl font-bold text-blue-900">
+          <h4 className="text-blue-400 md:text-md lg:text-2xl font-bold">CARING FOR <br />LIFE</h4>
+          <p className="lg:text-3xl md:text-xl font-bold text-blue-900">
             Leading the way in  
             <br />
             <span className="text-blue-900">Homeopathic</span> <br />

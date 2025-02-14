@@ -36,7 +36,7 @@ const LoginPage = () => {
     // Navigate based on role
     if (role === "doctor") {
       navigate("/doctordashboard"); // Redirect to user dashboard
-    } else if (role === "admin") {
+    } else if (role === "user") {
       navigate("/admindashboard"); // Redirect to admin dashboard
     }
   };
@@ -67,7 +67,7 @@ const LoginPage = () => {
               className={`${
                 role === "admin" ? "bg-blue-300 text-black font-semibold" : "bg-gray-200 text-black"
               } w-32 py-2 rounded-md font-semibold transition duration-200 hover:bg-blue-600`}
-              onClick={() => setRole("admin")}
+              onClick={() => setRole("user")}
             >
               User
             </button>
