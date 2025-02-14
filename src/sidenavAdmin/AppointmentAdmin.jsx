@@ -1,7 +1,7 @@
 // src/components/Appointments.js
-import React from 'react';
+
 import { FaCalendarAlt, FaChartLine } from 'react-icons/fa'; // Adding icons for a better UI
-import { Link } from 'react-router-dom';
+
 import AdminDashSidebar from '../components/AdminDashSidebar';
 
 const AppointmentAdmin = () => {

@@ -15,10 +15,17 @@ import LoginPage from './components/LoginPage';
 import ForgotPassword from './components/ForgotPassword';
 
 import DoctorsDashboard from './components/DoctorsDashboard';
+import Patient from './sideNavDoc/Patient';
+import Settings from "./sideNavDoc/Settings";
+import Scheduler from "./sideNavDoc/Schedular";
+import PatientReport from "./sideNavDoc/PatientReport";
+import DAppointment from './sideNavDoc/DAppointments';
+import LoginDoc from './sideNavDoc/LoginDoc';
+
 import AdminsDashboard from './components/AdminsDashboard';
 
 import BookConfirmation from './components/BookConfirmation';
-import Overview from './sidenavAdmin/Overview';
+// import Overview from './sidenavAdmin/Overview';
 import AppointmentAdmin from './sidenavAdmin/AppointmentAdmin';
 import ReportPage from './sidenavAdmin/ReportPage';
 import SettingsPage from './sidenavAdmin/SettingsPage';
@@ -26,11 +33,13 @@ import HelpCenter from './sidenavAdmin/HelpCenter';
 import ContactSupport from './sidenavAdmin/ContactSupport';
 import Chatbot from './sidenavAdmin/Chatbot';
 import BookAppointment from './components/BookAppointment';
+
 import PaymentPage from './DOCtorDashboard/PaymentPage';
 import DashboardNav from './DOCtorDashboard/DashboardNav';
 import DoctorSchedule from './DOCtorDashboard/DoctorSchedule';
 import PatientList from './DOCtorDashboard/PatientList';
 import AppointmentRequests from './DOCtorDashboard/AppointmentRequests';
+
 
 
 
@@ -64,7 +73,7 @@ const App = () => {
         <Route path="/login" element={<SimpleLayout><LoginPage /></SimpleLayout>} />
         <Route path="/create" element={<SimpleLayout><CreateAccount /></SimpleLayout>} />
         <Route path="/forgotpassword" element={<SimpleLayout><ForgotPassword/></SimpleLayout>} />
-        <Route path="/doctordashboard" element={<SimpleLayout><DoctorsDashboard/></SimpleLayout>} />
+        
         <Route path="/admindashboard" element={<SimpleLayout><AdminsDashboard/></SimpleLayout>} />
         <Route path="/docappointment" element={<SimpleLayout><AppointmentRequests/></SimpleLayout>} />
 
@@ -73,6 +82,7 @@ const App = () => {
         <Route path="/settingsadmin" element={<SimpleLayout><SettingsPage/></SimpleLayout>} />
         <Route path="/helpcenter" element={<SimpleLayout><HelpCenter/></SimpleLayout>} />
         <Route path="/chatbot" element={<SimpleLayout><Chatbot/></SimpleLayout>} />
+
         <Route path="/payment" element={<SimpleLayout><PaymentPage/></SimpleLayout>} />
         <Route path="/dashboard-nav" element={<SimpleLayout><DashboardNav/></SimpleLayout>} />
         <Route path="/appointmentadmin" element={<SimpleLayout><AppointmentAdmin/></SimpleLayout>} />
@@ -80,6 +90,16 @@ const App = () => {
         <Route path="/patient-list" element={<SimpleLayout><PatientList/></SimpleLayout>} />
         
 
+=======
+        <Route path="/doctordashboard" element={<SimpleLayout><DoctorsDashboard/></SimpleLayout>} />
+        <Route path="/appointmentadmin" element={<SimpleLayout><AppointmentAdmin/></SimpleLayout>} />
+         <Route path="/appointment-doc" element={<SimpleLayout><DAppointment/></SimpleLayout>} /> 
+         <Route path="/patient" element={<SimpleLayout><Patient/></SimpleLayout>} /> 
+         <Route path="/settings" element={<SimpleLayout><Settings/></SimpleLayout>} /> 
+         <Route path="/scheduler" element={<SimpleLayout><Scheduler/></SimpleLayout>} /> 
+         <Route path="/patientreport" element={<SimpleLayout><PatientReport/></SimpleLayout>} /> 
+         <Route path="/logindoc" element={<SimpleLayout><LoginDoc/></SimpleLayout>} /> 
+>>>>>>> bc685b01bd2eb7dfabc80f0002a3e5d47b18259b
         
         
     
@@ -103,7 +123,7 @@ const App = () => {
         <Route path="/contactsupport" element={<Layout><ContactSupport/></Layout>} />
       </Routes>
     </Router>
-  );
+  )
 };
 
 export default App;
