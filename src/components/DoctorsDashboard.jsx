@@ -7,8 +7,7 @@ import PatientSummaryChart from "../DOCtorDashboard/PatientSummaryChart";
 import Sidebar from "../DOCtorDashboard/Sidebar";
 
 
-import DocDashSidebar from '../sideNavDoc/DocDashSidebar'
-import DocOverview from '../sideNavDoc/DocOverview'
+
 
 
 function DoctorsDashboard() {
