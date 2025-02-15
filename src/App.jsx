@@ -90,7 +90,7 @@ const App = () => {
         <Route path="/patient-list" element={<SimpleLayout><PatientList/></SimpleLayout>} />
         
 
-=======
+
         <Route path="/doctordashboard" element={<SimpleLayout><DoctorsDashboard/></SimpleLayout>} />
         <Route path="/appointmentadmin" element={<SimpleLayout><AppointmentAdmin/></SimpleLayout>} />
          <Route path="/appointment-doc" element={<SimpleLayout><DAppointment/></SimpleLayout>} /> 
@@ -99,7 +99,6 @@ const App = () => {
          <Route path="/scheduler" element={<SimpleLayout><Scheduler/></SimpleLayout>} /> 
          <Route path="/patientreport" element={<SimpleLayout><PatientReport/></SimpleLayout>} /> 
          <Route path="/logindoc" element={<SimpleLayout><LoginDoc/></SimpleLayout>} /> 
->>>>>>> bc685b01bd2eb7dfabc80f0002a3e5d47b18259b
         
         
     
