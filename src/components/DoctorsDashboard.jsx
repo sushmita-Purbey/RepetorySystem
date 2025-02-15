@@ -1,4 +1,5 @@
 <<<<<<< HEAD
+<<<<<<< HEAD
 import Dashboard from "../DoctorDashboard/Dashboard";
 import NavbarDoctor from "../DoctorDashboard/NavbarDoctor";
 import PatientHistory from "../DoctorDashboard/PatientHistory";
@@ -6,10 +7,18 @@ import PatientRequests from "../DoctorDashboard/PatientRequests";
 import PatientSummaryChart from "../DoctorDashboard/PatientSummaryChart";
 import Sidebar from "../DoctorDashboard/Sidebar";
 =======
+=======
 
-import DocDashSidebar from '../sideNavDoc/DocDashSidebar'
-import DocOverview from '../sideNavDoc/DocOverview'
->>>>>>> bc685b01bd2eb7dfabc80f0002a3e5d47b18259b
+import Dashboard from "../DOCtorDashboard/Dashboard";
+import NavbarDoctor from "../DOCtorDashboard/NavbarDoctor";
+import PatientHistory from "../DOCtorDashboard/PatientHistory";
+import PatientRequests from "../DOCtorDashboard/PatientRequests";
+import PatientSummaryChart from "../DOCtorDashboard/PatientSummaryChart";
+import Sidebar from "../DOCtorDashboard/Sidebar";
+>>>>>>> fa83eb5dd801376b90f03316f0d1200c3db5dee9
+
+
+
 
 
 function DoctorsDashboard() {
