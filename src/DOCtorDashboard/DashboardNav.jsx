@@ -1,9 +1,9 @@
-import Dashboard from "../DOCtorDashboard/Dashboard";
-import NavbarDoctor from "../DOCtorDashboard/NavbarDoctor";
-import PatientHistory from "../DOCtorDashboard/PatientHistory";
-import PatientRequests from "../DOCtorDashboard/PatientRequests";
-import PatientSummaryChart from "../DOCtorDashboard/PatientSummaryChart";
-import Sidebar from "../DOCtorDashboard/Sidebar";
+import Dashboard from "./Dashboard";
+import NavbarDoctor from "./NavbarDoctor";
+import PatientHistory from "./PatientHistory";
+import PatientRequests from "./PatientRequests";
+import PatientSummaryChart from "./PatientSummaryChart";
+import Sidebar from "./Sidebar";
 
 
 function DashboardNav() {

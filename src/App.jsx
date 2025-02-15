@@ -34,11 +34,18 @@ import ContactSupport from './sidenavAdmin/ContactSupport';
 import Chatbot from './sidenavAdmin/Chatbot';
 import BookAppointment from './components/BookAppointment';
 
-import PaymentPage from './DOCtorDashboard/PaymentPage';
-import DashboardNav from './DOCtorDashboard/DashboardNav';
-import DoctorSchedule from './DOCtorDashboard/DoctorSchedule';
-import PatientList from './DOCtorDashboard/PatientList';
-import AppointmentRequests from './DOCtorDashboard/AppointmentRequests';
+import PaymentPage from './DoctorDashboard/PaymentPage';
+import DashboardNav from './DoctorDashboard/DashboardNav';
+import DoctorSchedule from './DoctorDashboard/DoctorSchedule';
+import PatientList from './DoctorDashboard/PatientList';
+import AppointmentRequests from './DoctorDashboard/AppointmentRequests';
+import Dashboard from './DoctorDashboard/Dashboard';
+import DashboardCard from './DoctorDashboard/DashboardCard';
+import NavbarDoctor from './DoctorDashboard/NavbarDoctor';
+import PatientHistory from './DoctorDashboard/PatientHistory';
+import PatientRequests from './DoctorDashboard/PatientRequests';
+import PatientSummaryChart from './DoctorDashboard/PatientSummaryChart';
+import Sidebar from './DoctorDashboard/Sidebar';
 
 
 
@@ -90,7 +97,7 @@ const App = () => {
         <Route path="/patient-list" element={<SimpleLayout><PatientList/></SimpleLayout>} />
         
 
-=======
+
         <Route path="/doctordashboard" element={<SimpleLayout><DoctorsDashboard/></SimpleLayout>} />
         <Route path="/appointmentadmin" element={<SimpleLayout><AppointmentAdmin/></SimpleLayout>} />
          <Route path="/appointment-doc" element={<SimpleLayout><DAppointment/></SimpleLayout>} /> 
@@ -99,16 +106,24 @@ const App = () => {
          <Route path="/scheduler" element={<SimpleLayout><Scheduler/></SimpleLayout>} /> 
          <Route path="/patientreport" element={<SimpleLayout><PatientReport/></SimpleLayout>} /> 
          <Route path="/logindoc" element={<SimpleLayout><LoginDoc/></SimpleLayout>} /> 
->>>>>>> bc685b01bd2eb7dfabc80f0002a3e5d47b18259b
+
         
         
     
-        {/* <Route path="/appointments" element={<Appointments />} />
-        <Route path="/calendars" element={<Calendars />} />
-        <Route path="/reports" element={<Reports />} />
-        <Route path="/settings" element={<Settings />} />
-        <Route path="/help-center" element={<HelpCenter />} /> */}
-      
+        
+
+        <Route path="/appointment-request" element={<Layout><AppointmentRequests/></Layout>} />
+        <Route path="/dashboard" element={<Layout><Dashboard /></Layout>} />
+        <Route path="/dashboard-card" element={<Layout><DashboardCard /></Layout>} />
+        <Route path="/dashboard-nav" element={<Layout><DashboardNav /></Layout>} />
+        <Route path="/doctor-scedule" element={<Layout><DoctorSchedule /></Layout>} />
+        <Route path="/nav" element={<Layout><NavbarDoctor /></Layout>} />
+        <Route path="/doctors" element={<Layout><PatientHistory /></Layout>} />
+        <Route path="/doctors" element={<Layout><PatientList /></Layout>} />
+        <Route path="/doctors" element={<Layout><PatientRequests /></Layout>} />
+        <Route path="/doctors" element={<Layout><PatientSummaryChart /></Layout>} />
+        <Route path="/doctors" element={<Layout><PaymentPage /></Layout>} />
+        <Route path="/doctors" element={<Layout><Sidebar /></Layout>} />
         
         {/* All other routes will use the standard layout with Header and Footer */}
         <Route path="/home" element={<Layout><Home /></Layout>} />
