@@ -29,11 +29,11 @@ import ContactSupport from './sidenavAdmin/ContactSupport';
 import Chatbot from './sidenavAdmin/Chatbot';
 import BookAppointment from './components/BookAppointment';
 
-import PaymentPage from './DOCtorDashboard/PaymentPage';
+import PaymentPage from './DoctorDashboard/PaymentPage';
 import DashboardNav from './DOCtorDashboard/DashboardNav';
 import DoctorSchedule from './DOCtorDashboard/DoctorSchedule';
 import PatientList from './DOCtorDashboard/PatientList';
-import AppointmentRequests from './DOCtorDashboard/AppointmentRequests';
+import AppointmentRequests from './DoctorDashboard/AppointmentRequests';
 
 
 

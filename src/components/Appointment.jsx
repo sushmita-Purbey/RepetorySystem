@@ -17,7 +17,8 @@ const Appointment = () => {
   const navigate = useNavigate(); // Use useNavigate for routing
 
   const handleDiseaseClick = (diseaseName) => {
-    navigate(`/doctor-details/${diseaseName}`); // Navigate to the doctor details page
+    navigate(`/doctor-details/${diseaseName}`);
+// Navigate to the doctor details page
   };
 
   return (
