@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"; 
-import axios from "axios"; // React Router for page navigation
+import axios from "axios";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -22,11 +22,26 @@ const LoginPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Function to extract clean name from email
+  const extractNameFromEmail = (email) => {
+    // Get the part before @ symbol
+    const namePart = email.split('@')[0];
+    
+    // Remove numbers and special characters, capitalize first letter
+    const cleanName = namePart.replace(/[^a-zA-Z]/g, '');
+    return cleanName.charAt(0).toUpperCase() + cleanName.slice(1).toLowerCase();
+  };
+
   // Handle form submission
   const handleLogin = async (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     const { email, password } = formData; // Extract email & password correctly
   
+=======
+    const { email, password } = formData;
+
+>>>>>>> bd1a4280fa9d86939dcce5e164721b171c1409bc
     try {
       const response = await axios.post("http://localhost:5000/login", {
         email,
@@ -36,6 +51,7 @@ const LoginPage = () => {
   
       if (response.data.success) {
         setMessage("✅ Login successful! Redirecting...");
+<<<<<<< HEAD
   
         // ✅ Store user data in localStorage
         const userData = {
@@ -46,8 +62,25 @@ const LoginPage = () => {
         localStorage.setItem("user", JSON.stringify(userData));
   
         // ✅ Redirect based on role after successful login
+=======
+        
+        // Store doctor information in localStorage if doctor role
+        if (role === "doctor") {
+          // Extract doctor info from response or use clean name from email
+          const doctorName = response.data.name || extractNameFromEmail(email);
+          const doctorQualification = response.data.qualification || "MBBS, MD (Medicine), MCPS";
+          
+          // Save doctor data to localStorage
+          localStorage.setItem("doctorData", JSON.stringify({
+            name: doctorName,
+            qualification: doctorQualification
+          }));
+        }
+
+        // Redirect based on role after successful login
+>>>>>>> bd1a4280fa9d86939dcce5e164721b171c1409bc
         setTimeout(() => {
-          if (response.data.role === "user") {
+          if (role === "user") {
             navigate("/admindashboard");
           } else {
             navigate("/doctordashboard");

@@ -15,7 +15,7 @@ const PatientSummaryChart = () => {
   };
 
   return (
-    <div className="bg-white h-[45vh] p-5  shadow-md rounded-lg w-1/4">
+    <div className="bg-white h-[45vh] p-10  shadow-md rounded-lg w-1/4">
       <h2 className="text-lg font-semibold mb-3">Patients Summary</h2>
       <Doughnut data={data} />
     </div>

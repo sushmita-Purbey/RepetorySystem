@@ -1,48 +1,183 @@
-import React, { useEffect, useState } from "react";
+import { useState, useEffect } from "react";
+import axios from "axios";
+import Sidebar from "./Sidebar";
+import PatientForm from "./PatientForm";
+
+
+const api = axios.create({
+    baseURL: 'http://localhost:5000',
+    timeout: 5000
+});
 
 const PatientHistory = () => {
-  const [appointments, setAppointments] = useState([
-    { patientName: "John Doe", contact: "123-456-7890", date: "2024-02-10", doctor: "Dr. Smith", department: "Cardiology", problem: "Chest Pain", disease: "Hypertension", prescription: "Aspirin, Beta-blockers", paymentMode: "Credit Card", amount: "$200", status: "Completed" },
-    { patientName: "Jane Doe", contact: "987-654-3210", date: "2024-02-08", doctor: "Dr. Brown", department: "Dermatology", problem: "Skin Rash", disease: "Eczema", prescription: "Hydrocortisone Cream", paymentMode: "Cash", amount: "$100", status: "Completed" },
-    { patientName: "Alice Johnson", contact: "111-222-3333", date: "2024-02-07", doctor: "Dr. Taylor", department: "Neurology", problem: "Headache", disease: "Migraine", prescription: "Ibuprofen, Sumatriptan", paymentMode: "Debit Card", amount: "$150", status: "Completed" },
-    { patientName: "Robert Brown", contact: "444-555-6666", date: "2024-02-05", doctor: "Dr. Wilson", department: "Orthopedics", problem: "Knee Pain", disease: "Arthritis", prescription: "Pain Relievers, Physical Therapy", paymentMode: "Insurance", amount: "1300", status: "Completed" },
-    
-   
-  ]);
+    const [searchTerm, setSearchTerm] = useState("");
+    const [patients, setPatients] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+    const [showForm, setShowForm] = useState(false);
+    const [editingPatient, setEditingPatient] = useState(null);
+    const [sortConfig, setSortConfig] = useState({ field: 'name', order: 'asc' });
 
-  return (
-    <div className="p-1 ml-2 shadow " >
-      <h2 className="text-xl font-semibold mb-2">Past Appointments</h2>
-      <table className="w-full border-collapse border border-gray-300">
-        <thead>
-          <tr className="bg-blue-100">
-            <th className="border border-gray-300 text-md p-1">Patient Name</th>
-            <th className="border border-gray-300 text-md p-1">Contact</th>
-            <th className="border border-gray-300 text-md p-1">Date </th>
-            <th className="border border-gray-300 text-md p-1">Department</th>
-            <th className="border border-gray-300 text-md p-1">Problem</th>
-            <th className="border border-gray-300 text-md p-1">Prescription</th>
-            <th className="border border-gray-300 text-md p-1">Payment Mode</th>
-            <th className="border border-gray-300 text-md p-1">Amount</th>
-          </tr>
-        </thead>
-        <tbody>
-          {appointments.map((appointment, index) => (
-            <tr key={index} className="text-center">
-              <td className="border border-gray-300 text-md p-1 bg-white">{appointment.patientName}</td>
-              <td className="border border-gray-300 text-md p-1 bg-white">{appointment.contact}</td>
-              <td className="border border-gray-300 text-md p-1 bg-white">{appointment.date}</td>
-              <td className="border border-gray-300 text-md p-1 bg-white">{appointment.department}</td>
-              <td className="border border-gray-300 text-md p-1 bg-white">{appointment.problem}</td>
-              <td className="border border-gray-300 text-md p-1 bg-white">{appointment.prescription}</td>
-              <td className="border border-gray-300 text-md p-1 bg-white">{appointment.paymentMode}</td>
-              <td className="border border-gray-300 text-md p-1 bg-white">{appointment.amount}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
+    const fetchPatients = async () => {
+        try {
+            setLoading(true);
+            setError(null);
+            const response = await api.get('/api/patients', {
+                params: {
+                    sortField: sortConfig.field,
+                    sortOrder: sortConfig.order
+                }
+            });
+            console.log('Fetched data:', response.data); // Debug log
+            setPatients(response.data);
+        } catch (error) {
+            console.error('Error details:', error.response || error); // Enhanced error logging
+            const errorMessage = error.response?.status === 404 
+                ? "Server not found. Please check if the backend is running."
+                : "Error loading patients. Please try again.";
+            setError(errorMessage);
+        } finally {
+            setLoading(false);
+        }
+    };
+
+    useEffect(() => {
+        fetchPatients();
+    }, [sortConfig]);
+
+    const handleSort = (field) => {
+        setSortConfig(prevConfig => ({
+            field,
+            order: prevConfig.field === field && prevConfig.order === 'asc' ? 'desc' : 'asc'
+        }));
+    };
+
+    const handleSearch = (event) => {
+        setSearchTerm(event.target.value);
+    };
+
+    const filteredPatients = patients.filter(patient =>
+        patient.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        patient.contact.includes(searchTerm)
+    );
+
+   // Modify these functions in your PatientList component:
+
+const handleAddPatient = async (patientData) => {
+    try {
+        setError(null);
+        const response = await api.post('/api/patients', patientData);
+        setPatients(prev => [...prev, response.data]);
+        setShowForm(false);
+        
+        // Emit event that patient list was updated
+        window.dispatchEvent(new Event('patientListUpdated'));
+    } catch (error) {
+        setError("Error adding patient. Please try again.");
+        console.error('Error adding patient:', error);
+    }
+};
+
+const handleEditPatient = async (patientData) => {
+    try {
+        setError(null);
+        const response = await api.put(`/api/patients/${editingPatient._id}`, patientData);
+        setPatients(prev => 
+            prev.map(p => p._id === editingPatient._id ? response.data : p)
+        );
+        setEditingPatient(null);
+        
+        // Emit event that patient list was updated
+        window.dispatchEvent(new Event('patientListUpdated'));
+    } catch (error) {
+        setError("Error updating patient. Please try again.");
+        console.error('Error updating patient:', error);
+    }
+};
+
+const handleDeletePatient = async (id) => {
+    if (window.confirm('Are you sure you want to delete this patient?')) {
+        try {
+            setError(null);
+            await api.delete(`/api/patients/${id}`);
+            setPatients(prev => prev.filter(p => p._id !== id));
+            
+            // Emit event that patient list was updated
+            window.dispatchEvent(new Event('patientListUpdated'));
+        } catch (error) {
+            setError("Error deleting patient. Please try again.");
+            console.error('Error deleting patient:', error);
+        }
+    }
+};
+
+    return (
+        <div className="flex absolute right-0 w-[900px] h-[200px]">
+           
+            <div className="p-4 ">
+                {error && (
+                    <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+                        {error}
+                    </div>
+                )}
+                
+               
+
+                {loading ? (
+                    <div className="text-center py-4">Loading...</div>
+                ) : (
+                    <div className="overflow-x-auto">
+                        <table className="min-w-full bg-white border rounded-lg">
+                            <thead className="bg-gray-100">
+                                <tr>
+                                    <th className="px-6 py-3 cursor-pointer" onClick={() => handleSort('name')}>
+                                        Name {sortConfig.field === 'name' && (sortConfig.order === 'asc' ? '↑' : '↓')}
+                                    </th>
+                                    
+                                    <th className="px-6 py-3">Date</th>
+                                    <th className="px-6 py-3">Problem</th>
+                                    
+                                    <th className="px-6 py-3">Payment Mode</th>
+                                    <th className="px-6 py-3">Amount</th>
+                                    <th className="px-6 py-3">Time</th>
+                                    
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {filteredPatients.map((patient) => (
+                                    <tr key={patient._id} className="border-b hover:bg-gray-50">
+                                        <td className="px-6 py-4">{patient.name}</td>
+                                        
+                                        <td className="px-6 py-4">{patient.date}</td>
+                                        <td className="px-6 py-4">{patient.problem}</td>
+                                        
+                                        <td className="px-6 py-4">{patient.paymentMode}</td>
+                                        <td className="px-6 py-4">{patient.amount}</td>
+                                        <td className="px-6 py-4">{patient.time}</td>
+                                        <td className="px-6 py-4">
+                                           
+                                          
+                                        </td>
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </div>
+                )}
+
+                {(showForm || editingPatient) && (
+                    <PatientForm
+                        onSubmit={editingPatient ? handleEditPatient : handleAddPatient}
+                        onCancel={() => {
+                            setShowForm(false);
+                            setEditingPatient(null);
+                        }}
+                        initialData={editingPatient}
+                    />
+                )}
+            </div>
+        </div>
+    );
 };
 
 export default PatientHistory;

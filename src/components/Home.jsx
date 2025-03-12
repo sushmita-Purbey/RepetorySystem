@@ -44,23 +44,8 @@ const Home = () => {
             <img src="/nav1.png" alt="Icon" className="w-6 h-6 cursor-pointer" />
           </motion.button>
 
-          <motion.button
-            className="text-white rounded bg-blue-400 px-12 py-6 flex items-center gap-16"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <a href="#scheduling" className="text-white hover:underline">Scheduling</a>
-            <img src="/nav2.png" alt="Icon" className="w-6 h-6 cursor-pointer" />
-          </motion.button>
+          
 
-          <motion.button
-            className="text-white rounded bg-[#16255b] px-12 py-6 flex items-center gap-16"
-            whileHover={{ scale: 1.1 }}
-            whileTap={{ scale: 0.9 }}
-          >
-            <a href="/appointment" className="text-white hover:underline">Scheduling</a>
-            <img src="/nav3.png" alt="Icon" className="w-6 h-6 cursor-pointer" />
-          </motion.button>
         </motion.div>
       </motion.div>
       <div className="mt-6 px-8 py-10 flex flex-col items-center justify-center text-lest gap-4">

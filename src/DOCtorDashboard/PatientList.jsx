@@ -61,44 +61,55 @@ const PatientList = () => {
         patient.contact.includes(searchTerm)
     );
 
-    const handleAddPatient = async (patientData) => {
+   // Modify these functions in your PatientList component:
+
+const handleAddPatient = async (patientData) => {
+    try {
+        setError(null);
+        const response = await api.post('/api/patients', patientData);
+        setPatients(prev => [...prev, response.data]);
+        setShowForm(false);
+        
+        // Emit event that patient list was updated
+        window.dispatchEvent(new Event('patientListUpdated'));
+    } catch (error) {
+        setError("Error adding patient. Please try again.");
+        console.error('Error adding patient:', error);
+    }
+};
+
+const handleEditPatient = async (patientData) => {
+    try {
+        setError(null);
+        const response = await api.put(`/api/patients/${editingPatient._id}`, patientData);
+        setPatients(prev => 
+            prev.map(p => p._id === editingPatient._id ? response.data : p)
+        );
+        setEditingPatient(null);
+        
+        // Emit event that patient list was updated
+        window.dispatchEvent(new Event('patientListUpdated'));
+    } catch (error) {
+        setError("Error updating patient. Please try again.");
+        console.error('Error updating patient:', error);
+    }
+};
+
+const handleDeletePatient = async (id) => {
+    if (window.confirm('Are you sure you want to delete this patient?')) {
         try {
             setError(null);
-            const response = await api.post('/api/patients', patientData);
-            setPatients(prev => [...prev, response.data]);
-            setShowForm(false);
+            await api.delete(`/api/patients/${id}`);
+            setPatients(prev => prev.filter(p => p._id !== id));
+            
+            // Emit event that patient list was updated
+            window.dispatchEvent(new Event('patientListUpdated'));
         } catch (error) {
-            setError("Error adding patient. Please try again.");
-            console.error('Error adding patient:', error);
+            setError("Error deleting patient. Please try again.");
+            console.error('Error deleting patient:', error);
         }
-    };
-
-    const handleEditPatient = async (patientData) => {
-        try {
-            setError(null);
-            const response = await api.put(`/api/patients/${editingPatient._id}`, patientData);
-            setPatients(prev => 
-                prev.map(p => p._id === editingPatient._id ? response.data : p)
-            );
-            setEditingPatient(null);
-        } catch (error) {
-            setError("Error updating patient. Please try again.");
-            console.error('Error updating patient:', error);
-        }
-    };
-
-    const handleDeletePatient = async (id) => {
-        if (window.confirm('Are you sure you want to delete this patient?')) {
-            try {
-                setError(null);
-                await api.delete(`/api/patients/${id}`);
-                setPatients(prev => prev.filter(p => p._id !== id));
-            } catch (error) {
-                setError("Error deleting patient. Please try again.");
-                console.error('Error deleting patient:', error);
-            }
-        }
-    };
+    }
+};
 
     return (
         <div className="flex">
