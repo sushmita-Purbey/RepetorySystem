@@ -153,7 +153,7 @@ const CreateAccount = () => {
         </div>
         
         <button 
-          className="absolute bottom-[-60px] bg-blue-600 font-semibold h-10 w-[100px] rounded px-3 py-1 text-white hover:bg-blue-700" 
+          className="absolute bottom-[-30px] right-[-500px] bg-blue-600 font-semibold h-10 w-[100px] rounded px-3 py-1 text-white hover:bg-blue-700" 
           onClick={handleBack}
         >
           Go Back

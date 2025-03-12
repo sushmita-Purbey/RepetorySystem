@@ -79,16 +79,11 @@ const AppointmentRequests = () => {
                     </button>
                     <button 
                       className="bg-red-500 text-white px-2 py-1 rounded-md mr-2"
-                      onClick={() => updateStatus(request._id, "Rejected")}
-                    >
-                      Reject
-                    </button>
-                    <button 
-                      className="bg-gray-500 text-white px-2 py-1 rounded-md"
-                      onClick={() => updateStatus(request._id, "Pending")}
+                      onClick={() => updateStatus(request._id, "pending")}
                     >
                       Reset
                     </button>
+                  
                   </td>
                 </tr>
               ))}

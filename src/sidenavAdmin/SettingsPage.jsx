@@ -47,12 +47,7 @@ const SettingsPage = () => {
   };
 
   // Handle form submission (e.g., save changes)
-  const handleSaveChanges = (e) => {
-    e.preventDefault();
-    // Simulate saving data (You can replace this with API call)
-    setUser(formData);
-    alert("Profile updated successfully!");
-  };
+
 
   // Handle password change (simplified validation)
   const handlePasswordChange = (e) => {
@@ -73,81 +68,13 @@ const SettingsPage = () => {
         </div>
     <div className="flex-1 w-[1276px]  bg-blue-100 h-[100vh] absolute top-0 right-0  ">
       <h2 className="text-3xl px-10 py-4 font-semibold mb-6">Settings</h2>
-      <div className="flex">
+      <div className="flex justify-center items-center">
 
       {/* Profile Section */}
-      <form onSubmit={handleSaveChanges} className="bg-white mx-5 p-6 h-[532px] rounded-lg shadow-md mb-6 w-[48%]">
-        <h3 className="text-xl font-semibold mb-4">Edit Profile</h3>
-
-        <div className="flex items-center mb-6">
-          <img
-            src={formData.profilePic}
-            alt="Profile"
-            className="w-[100px] h-[100px] rounded-full border-4 border-blue-200 mr-6"
-          />
-          <div>
-            <label htmlFor="profilePic" className="block text-sm text-gray-600">
-              Change Profile Picture
-            </label>
-            <input
-              type="file"
-              id="profilePic"
-              name="profilePic"
-              accept="image/*"
-              onChange={handleProfilePicChange}
-              className="mt-2"
-            />
-          </div>
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="name" className="block text-sm text-gray-600">Full Name</label>
-          <input
-            type="text"
-            id="name"
-            name="name"
-            value={formData.name}
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-lg mt-2"
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="email" className="block text-sm text-gray-600">Email</label>
-          <input
-            type="email"
-            id="email"
-            name="email"
-            value={formData.email}
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-lg mt-2"
-            required
-          />
-        </div>
-
-        <div className="mb-4">
-          <label htmlFor="phone" className="block text-sm text-gray-600">Phone Number</label>
-          <input
-            type="text"
-            id="phone"
-            name="phone"
-            value={formData.phone}
-            onChange={handleChange}
-            className="w-full p-2 border border-gray-300 rounded-lg mt-2"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="w-full bg-blue-500 text-white py-2 rounded-lg mt-4 hover:bg-blue-600"
-        >
-          Save Profile
-        </button>
-      </form>
+    
 
       {/* Password Change Section */}
-      <form onSubmit={handlePasswordChange} className="bg-white w-[48%] h-[532px] mx-6 p-6 rounded-lg shadow-md">
+      <form onSubmit={handlePasswordChange} className="bg-white w-[48%] h-[532px] mt-8 mx-6 p-6 rounded-lg shadow-md">
         <h3 className="text-xl font-semibold mb-4">Change Password</h3>
 
         <div className="mb-4">

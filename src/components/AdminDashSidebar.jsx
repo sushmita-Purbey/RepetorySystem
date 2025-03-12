@@ -17,7 +17,7 @@ const AdminDashSidebar = () => {
   return (
     <div className="w-64 h-screen  bg-[#1F2B6C] fixed z-10 text-white font-semibold p-4 ">
       <div className="flex justify-center mb-10">
-        <h2 className="text-2xl font-semibold ">Admin Dashboard</h2>
+        <h2 className="text-2xl font-semibold ">User Dashboard</h2>
       </div>
       <ul>
         <li className="mb-4">

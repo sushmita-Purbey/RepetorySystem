@@ -26,32 +26,42 @@ const LoginPage = () => {
   const handleLogin = async (e) => {
     e.preventDefault();
     const { email, password } = formData; // Extract email & password correctly
-
+  
     try {
       const response = await axios.post("http://localhost:5000/login", {
         email,
         password,
         role,
       });
-
+  
       if (response.data.success) {
         setMessage("✅ Login successful! Redirecting...");
-
-        // Redirect based on role after successful login
+  
+        // ✅ Store user data in localStorage
+        const userData = {
+          name: response.data.user.name,
+          email: response.data.user.email,
+          role: response.data.role,
+        };
+        localStorage.setItem("user", JSON.stringify(userData));
+  
+        // ✅ Redirect based on role after successful login
         setTimeout(() => {
           if (response.data.role === "user") {
             navigate("/admindashboard");
           } else {
             navigate("/doctordashboard");
           }
-        }, 2000);
+        }, 1000); // Reduced delay for quicker navigation
       } else {
         setMessage("❌ " + response.data.message);
       }
     } catch (error) {
-      setMessage(`❌ Login failed. Try again. ${error.message}`);
+      console.error("Login failed:", error);
+      setMessage(`❌ Login failed. Try again. ${error.response?.data?.message || error.message}`);
     }
   };
+  
 
   return (
     <div
