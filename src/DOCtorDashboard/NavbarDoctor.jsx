@@ -13,4 +13,5 @@ const NavbarDoctor = () => {
   );
 };
 
+
 export default NavbarDoctor;

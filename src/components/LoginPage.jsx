@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom"; 
-import axios from "axios"; // React Router for page navigation
+import axios from "axios";
 
 const LoginPage = () => {
   const navigate = useNavigate();
@@ -22,10 +22,20 @@ const LoginPage = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
+  // Function to extract clean name from email
+  const extractNameFromEmail = (email) => {
+    // Get the part before @ symbol
+    const namePart = email.split('@')[0];
+    
+    // Remove numbers and special characters, capitalize first letter
+    const cleanName = namePart.replace(/[^a-zA-Z]/g, '');
+    return cleanName.charAt(0).toUpperCase() + cleanName.slice(1).toLowerCase();
+  };
+
   // Handle form submission
   const handleLogin = async (e) => {
     e.preventDefault();
-    const { email, password } = formData; // Extract email & password correctly
+    const { email, password } = formData;
 
     try {
       const response = await axios.post("http://localhost:5000/login", {
@@ -36,10 +46,23 @@ const LoginPage = () => {
 
       if (response.data.success) {
         setMessage("✅ Login successful! Redirecting...");
+        
+        // Store doctor information in localStorage if doctor role
+        if (role === "doctor") {
+          // Extract doctor info from response or use clean name from email
+          const doctorName = response.data.name || extractNameFromEmail(email);
+          const doctorQualification = response.data.qualification || "MBBS, MD (Medicine), MCPS";
+          
+          // Save doctor data to localStorage
+          localStorage.setItem("doctorData", JSON.stringify({
+            name: doctorName,
+            qualification: doctorQualification
+          }));
+        }
 
         // Redirect based on role after successful login
         setTimeout(() => {
-          if (response.data.role === "user") {
+          if (role === "user") {
             navigate("/admindashboard");
           } else {
             navigate("/doctordashboard");
