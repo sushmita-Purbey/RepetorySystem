@@ -1,13 +1,10 @@
-import React, { useState } from "react";
-import { Link, useNavigate } from "react-router-dom"; // React Router for page navigation
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom"; 
+import axios from "axios"; // React Router for page navigation
 
 const LoginPage = () => {
   const navigate = useNavigate();
-
-  const handleBack = () => {
-    navigate("/"); // If no history, redirect to Home
-  };
-
+  
   // State to manage role (admin/doctor)
   const [role, setRole] = useState("doctor");
 
@@ -17,27 +14,42 @@ const LoginPage = () => {
     password: "",
   });
 
+  // State for messages
+  const [message, setMessage] = useState("");
+
   // Handle form data changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleLogin = async (e) => {
     e.preventDefault();
-    console.log("Login Submitted", formData);
+    const { email, password } = formData; // Extract email & password correctly
 
-    // Clear form after submission (optional)
-    setFormData({
-      email: "",
-      password: "",
-    });
+    try {
+      const response = await axios.post("http://localhost:5000/login", {
+        email,
+        password,
+        role,
+      });
 
-    // Navigate based on role
-    if (role === "doctor") {
-      navigate("/doctordashboard"); // Redirect to user dashboard
-    } else if (role === "user") {
-      navigate("/admindashboard"); // Redirect to admin dashboard
+      if (response.data.success) {
+        setMessage("✅ Login successful! Redirecting...");
+
+        // Redirect based on role after successful login
+        setTimeout(() => {
+          if (response.data.role === "user") {
+            navigate("/admindashboard");
+          } else {
+            navigate("/doctordashboard");
+          }
+        }, 2000);
+      } else {
+        setMessage("❌ " + response.data.message);
+      }
+    } catch (error) {
+      setMessage(`❌ Login failed. Try again. ${error.message}`);
     }
   };
 
@@ -51,7 +63,7 @@ const LoginPage = () => {
       <div className="flex items-center justify-center min-h-screen bg-blue-900 bg-opacity-20 inset-0">
         <div className="absolute top-50 max-w-md w-full space-y-6 p-6 rounded-2xl shadow-2xl bg-blue-500 bg-opacity-30 backdrop-blur-md">
           <h2 className="text-center text-3xl font-semibold font-italic text-black mt-2">Login</h2>
-          <h5 className="text-center text-xl text-gray-900  font-semibold text-black ">({role} login)</h5>
+          <h5 className="text-center text-xl text-gray-900 font-semibold text-black">({role} login)</h5>
 
           {/* Role Selection */}
           <div className="flex justify-center space-x-4 mt-8">
@@ -73,7 +85,10 @@ const LoginPage = () => {
             </button>
           </div>
 
-          <form className="mt-8 space-y-6" onSubmit={handleSubmit}>
+          {/* Display Login Message */}
+          {message && <p className="text-center text-red-500">{message}</p>}
+
+          <form className="mt-8 space-y-6" onSubmit={handleLogin}>
             {/* Email Input */}
             <div>
               <label htmlFor="email" className="sr-only">Email Address</label>
@@ -130,7 +145,7 @@ const LoginPage = () => {
         </div>
         <button
           className="absolute bottom-10 transform active:scale-95 transition-transform right-10 bg-blue-300 font-semibold block rounded px-3 py-1"
-          onClick={handleBack}
+          onClick={() => navigate("/")}
         >
           Go Back
         </button>

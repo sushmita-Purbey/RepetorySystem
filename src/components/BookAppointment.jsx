@@ -1,171 +1,103 @@
 import { useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import axios from "axios";
+import { Link } from "react-router-dom";
 
 const BookAppointment = () => {
-  const { doctorName } = useParams();
-  const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [contact, setContact] = useState("");
+  const [doctorName, setDoctorName] = useState("");
+  const [problem, setProblem] = useState("");
+  const [date, setDate] = useState("");
+  const [time, setTime] = useState("");
+  const [paymentMode, setPaymentMode] = useState("Cash");
+  const [message, setMessage] = useState("");
 
-  // Form state
-  const [formData, setFormData] = useState({
-    name: "",
-    age: "",
-    email: "",
-    address: "",
-    date: "",
-    reason: "",
-  });
-
-  const [errors, setErrors] = useState({});
-  const [step, setStep] = useState(1);
-  const [isFormComplete, setIsFormComplete] = useState(false);
-
-  // Validation function (validates only current step)
-  const validate = (step) => {
-    let newErrors = {};
-
-    if (step === 1) {
-      if (!/^[A-Za-z\s]+$/.test(formData.name.trim())) {
-        newErrors.name = "Name should contain only alphabets.";
-      }
-      if (!/^[0-9]+$/.test(formData.age) || parseInt(formData.age) <= 0) {
-        newErrors.age = "Age should be a valid positive number.";
-      }
-      if (!formData.email.match(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/)) {
-        newErrors.email = "Enter a valid email address.";
-      }
-    } else if (step === 2) {
-      if (formData.address.trim().length < 5) {
-        newErrors.address = "Address must be at least 5 characters long.";
-      }
-      if (!formData.date) {
-        newErrors.date = "Please select a valid date.";
-      }
-      if (formData.reason && formData.reason.trim().length < 5) {
-        newErrors.reason = "Reason must be at least 5 characters long.";
-      }
-    }
-
-    setErrors(newErrors);
-    return Object.keys(newErrors).length === 0;
-  };
-
-  // Handle input changes
-  const handleChange = (e) => {
-    const { name, value } = e.target;
-    setFormData((prev) => ({ ...prev, [name]: value }));
-
-    // Clear errors dynamically as user types
-    setErrors((prevErrors) => ({ ...prevErrors, [name]: "" }));
-  };
-
-  // Next step handler
-  const nextStep = () => {
-    if (validate(step)) {
-      setStep((prev) => prev + 1);
-    }
-  };
-
-  // Previous step handler
-  const prevStep = () => {
-    setStep((prev) => prev - 1);
-  };
-
-  // Handle form submission
-  const handleSubmit = (e) => {
+  const handleAppointment = async (e) => {
     e.preventDefault();
-    if (validate(2)) {
-      setIsFormComplete(true);
-      navigate(`/booking-confirmation`, { state: { doctorName, formData } });
+    try {
+      const response = await axios.post("http://localhost:5000/book-appointment", {
+        name,
+        contact,
+        doctorName,
+        problem,
+        date,
+        time,
+        paymentMode,
+      });
+
+      if (response.data.success) {
+        setMessage("✅ Appointment booked successfully!");
+      } else {
+        setMessage("❌ " + response.data.message);
+      }
+    } catch (error) {
+      setMessage("❌ Appointment booking failed. Try again.");
     }
   };
 
   return (
-    
-    <div className="min-h-screen flex items-center justify-center bg-blue-100 pl-28 bg-cover" style={{ backgroundImage: "url('/back 1.png')" }}>
-      
-      <div className="flex  max-w-xl">
-        <div className="w-full max-w-sm p-6 bg-white bg-opacity-30 backdrop-blur-lg rounded-lg shadow-md">
-        <h1 className="text-3xl font-bold text-blue-800 text-left">Book an Appointment</h1>
-          <p className="text-lg text-gray-700 my-4 text-left">
-            You are booking an appointment with <strong>{doctorName}</strong>.
-          </p>
-
-          <form onSubmit={handleSubmit}>
-            {step === 1 && (
-              <>
-                <label className="block mb-2 text-gray-700 text-sm">Your Name *</label>
-                <input type="text" name="name" value={formData.name} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm" placeholder="Enter your name" />
-                {errors.name && <p className="text-blue-700 text-xs">{errors.name}</p>}
-
-                <label className="block mb-2 text-gray-700 text-sm">Age *</label>
-                <input type="number" name="age" value={formData.age} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm" placeholder="Enter your age" />
-                {errors.age && <p className="text-blue-700 text-xs">{errors.age}</p>}
-
-                <label className="block mb-2 text-gray-700 text-sm">Email *</label>
-                <input type="email" name="email" value={formData.email} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm" placeholder="Enter your email" />
-                {errors.email && <p className="text-blue-700 text-xs">{errors.email}</p>}
-              </>
-            )}
-
-            {step === 2 && (
-              <>
-               <label className="block mb-2 text-gray-700 text-sm">Address *</label>
-<input type="text" name="address" value={formData.address} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm" placeholder="Enter your address" />
-{errors.address && <p className="text-blue-700 text-xs">{errors.address}</p>}
-
-<label className="block mb-2 text-gray-700 text-sm">Appointment Date *</label>
-<input type="date" name="date" value={formData.date} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm" />
-{errors.date && <p className="text-blue-700 text-xs">{errors.date}</p>}
-
-<label className="block mb-2 text-gray-700 text-sm">Appointment Time *</label>
-<select name="time" value={formData.time} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm">
-    <option value="">Select Time</option>
-    <option value="9 AM">9 AM</option>
-    <option value="10 AM">10 AM</option>
-    <option value="11 AM">11 AM</option>
-    <option value="12 PM">12 PM</option>
-    <option value="1 PM">1 PM</option>
-    <option value="2 PM">2 PM</option>
-    <option value="3 PM">3 PM</option>
-    <option value="4 PM">4 PM</option>
-    <option value="5 PM">5 PM</option>
-</select>
-{errors.time && <p className="text-blue-700 text-xs">{errors.time}</p>}
-
-<label className="block mb-2 text-gray-700 text-sm">Appointment Type *</label>
-<select name="appointmentType" value={formData.appointmentType} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm">
-    <option value="">Select Appointment Type</option>
-    <option value="Online">Online Video Call</option>
-    <option value="Offline">Offline (In-Person)</option>
-</select>
-{errors.appointmentType && <p className="text-blue-700 text-xs">{errors.appointmentType}</p>}
-
-<label className="block mb-2 text-gray-700 text-sm">Reason for Visit (Optional)</label>
-<textarea name="reason" value={formData.reason} onChange={handleChange} className="w-full p-2 border rounded-lg mb-1 text-sm" placeholder="Enter reason for visit (optional)"></textarea>
-{errors.reason && <p className="text-blue-700 text-xs">{errors.reason}</p>}
-
-              </>
-            )}
-
-            <div className="flex justify-between mt-4">
-              {step > 1 && (
-                <button type="button" onClick={prevStep} className="bg-gray-500 text-white py-2 px-4 rounded-lg hover:bg-gray-700 transition text-sm">
-                  Previous
-                </button>
-              )}
-              {step < 2 ? (
-                <button type="button" onClick={nextStep} className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition text-sm">
-                  Next
-                </button>
-              ) : (
-                <button type="submit" className="bg-blue-500 text-white py-2 px-4 rounded-lg hover:bg-blue-700 transition text-sm">
-                  Confirm Appointment
-                </button>
-              )}
-            </div>
-          </form>
-        </div>
-      </div>
+    <div className="h-screen flex flex-col items-center justify-center bg-gray-100">
+      <h1 className="text-3xl font-bold mb-4">Book an Appointment</h1>
+      {message && <p className="text-red-500">{message}</p>}
+      <form onSubmit={handleAppointment} className="bg-white p-6 rounded-lg shadow-md w-96 space-y-2">
+        <input
+          type="text"
+          placeholder="Patient Name"
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Contact Number"
+          value={contact}
+          onChange={(e) => setContact(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        />
+        <input
+          type="text"
+          placeholder="Doctor Name"
+          value={doctorName}
+          onChange={(e) => setDoctorName(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        />
+        <textarea
+          placeholder="Describe your problem"
+          value={problem}
+          onChange={(e) => setProblem(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        ></textarea>
+        <input
+          type="date"
+          value={date}
+          onChange={(e) => setDate(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        />
+        <input
+          type="time"
+          value={time}
+          onChange={(e) => setTime(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        />
+        <select
+          value={paymentMode}
+          onChange={(e) => setPaymentMode(e.target.value)}
+          className="w-full p-2 border rounded"
+          required
+        >
+          <option value="Cash">Cash</option>
+          <option value="Credit Card">Credit Card</option>
+          <option value="UPI">UPI</option>
+        </select>
+        <button type="submit" className="w-full bg-blue-500 text-white p-2 rounded">Book Appointment</button>
+      </form>
+      <Link className="mt-4 text-blue-600 hover:underline" to="/user-dashboard">View Appointments</Link>
     </div>
   );
 };

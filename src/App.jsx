@@ -6,6 +6,7 @@ import Footer from './components/Footer'; // Layout component to wrap all pages
 import AboutUs from './components/AboutUs';
 import Doctors from './components/Doctors';
 import Appointment from './components/Appointment';
+
 import DoctorDetails from './components/DoctorsDetails';
 import Contacts from './components/Contacts';
 import WelcomePage from './components/WelcomePage';
@@ -109,7 +110,10 @@ const App = () => {
         <Route path="/doctors" element={<Layout><Doctors /></Layout>} />
         <Route path="/about" element={<Layout><AboutUs /></Layout>} />
         <Route path="/appointment" element={<Layout><Appointment /></Layout>} />
+        
         <Route path="/book-appointment" element={<Layout><BookAppointment /></Layout>} />
+        
+
         <Route path="/booking-confirmation" element={<Layout><BookConfirmation /></Layout>} />
         <Route path="/doctor-details/:disease" element={<Layout><DoctorDetails /></Layout>} />
         <Route path="/contact" element={<Layout><Contacts /></Layout>} />
