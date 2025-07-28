@@ -1,6 +1,6 @@
 import { 
   FaFacebookF, FaTwitter, FaLinkedinIn, 
-  FaInstagram, FaPhoneAlt, FaMapMarkerAlt, 
+   FaPhoneAlt, FaMapMarkerAlt, 
   FaEnvelope, FaRegClock 
 } from "react-icons/fa";
 const AboutUs = () => {
@@ -85,7 +85,7 @@ const AboutUs = () => {
             Homeopathy, developed by Dr.Samuel Hahnemann in the 
           </p>
           <p>18th century, is a natural and holistic medicine system</p>
-          <p>based pn the principle "like curse like." It uses highly diluted</p>
+          <p>based on the principle like cures like. It uses highly diluted</p>
           <p>substances to treat symptoms.</p>
           <br />
 
