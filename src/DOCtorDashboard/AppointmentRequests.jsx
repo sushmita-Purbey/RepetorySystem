@@ -30,15 +30,6 @@ const AppointmentRequests = () => {
     }
   };
 
-  const addNewAppointment = async (appointmentData) => {
-    try {
-      await axios.post(`${API_BASE_URL}/appointments`, appointmentData);
-      fetchAppointments(); // Refresh the list after adding
-    } catch (error) {
-      console.error('Error adding appointment:', error);
-    }
-  };
-
   return (
     <div className="flex">
       <div>
@@ -71,41 +62,24 @@ const AppointmentRequests = () => {
                   <td className="border border-gray-300 p-2">{request.paymentMode}</td>
                   <td className="border border-gray-300 p-2">{request.status}</td>
                   <td className="border border-gray-300 p-2">
-<<<<<<< HEAD
-                    <button 
-                      className="bg-green-500 text-white px-2 py-1 rounded-md mr-2"
+                    <button
+                      className="bg-green-500 text-white px-2 py-1 rounded-md mr-2 hover:bg-green-600 transition duration-300"
                       onClick={() => updateStatus(request._id, "Accepted")}
                     >
                       Accept
                     </button>
-                    <button 
-                      className="bg-red-500 text-white px-2 py-1 rounded-md mr-2"
+                    <button
+                      className="bg-red-500 text-white px-2 py-1 rounded-md mr-2 hover:bg-red-600 transition duration-300"
+                      onClick={() => updateStatus(request._id, "Rejected")}
+                    >
+                      Reject
+                    </button>
+                    <button
+                      className="bg-gray-300 text-black px-2 py-1 rounded-md hover:bg-gray-400 transition duration-300"
                       onClick={() => updateStatus(request._id, "pending")}
                     >
                       Reset
                     </button>
-                  
-=======
-                  <button 
-                  className="bg-white-500 hover:bg-gray-300 text-blue-600 px-2 py-1 rounded-full mr-2 transition duration-300"
-                  onClick={() => updateStatus(request._id, "Accepted")}
-                >
-                  Accept
-                </button>
-                <button 
-                className="bg-white-500 hover:bg-gray-300 text-red-600 px-2 py-1 rounded-full mr-2 transition duration-300"
-                onClick={() => updateStatus(request._id, "Rejected")}
-              >
-                Reject
-              </button>
-
-              <button 
-              className="bg-white-500 hover:bg-gray-300 text-black px-2 py-1 rounded-full mr-2 transition duration-300"
-              onClick={() => updateStatus(request._id, "pending")}
-            >
-              Reset
-            </button>
->>>>>>> bd1a4280fa9d86939dcce5e164721b171c1409bc
                   </td>
                 </tr>
               ))}

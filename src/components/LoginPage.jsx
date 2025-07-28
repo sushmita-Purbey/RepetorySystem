@@ -4,88 +4,63 @@ import axios from "axios";
 
 const LoginPage = () => {
   const navigate = useNavigate();
-  
-  // State to manage role (admin/doctor)
   const [role, setRole] = useState("doctor");
 
-  // Form state
   const [formData, setFormData] = useState({
     email: "",
     password: "",
   });
 
-  // State for messages
   const [message, setMessage] = useState("");
 
-  // Handle form data changes
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  // Function to extract clean name from email
   const extractNameFromEmail = (email) => {
-    // Get the part before @ symbol
     const namePart = email.split('@')[0];
-    
-    // Remove numbers and special characters, capitalize first letter
     const cleanName = namePart.replace(/[^a-zA-Z]/g, '');
     return cleanName.charAt(0).toUpperCase() + cleanName.slice(1).toLowerCase();
   };
 
-  // Handle form submission
   const handleLogin = async (e) => {
     e.preventDefault();
-<<<<<<< HEAD
-    const { email, password } = formData; // Extract email & password correctly
-  
-=======
     const { email, password } = formData;
 
->>>>>>> bd1a4280fa9d86939dcce5e164721b171c1409bc
     try {
       const response = await axios.post("http://localhost:5000/login", {
         email,
         password,
         role,
       });
-  
+
       if (response.data.success) {
         setMessage("✅ Login successful! Redirecting...");
-<<<<<<< HEAD
-  
-        // ✅ Store user data in localStorage
-        const userData = {
-          name: response.data.user.name,
-          email: response.data.user.email,
-          role: response.data.role,
-        };
-        localStorage.setItem("user", JSON.stringify(userData));
-  
-        // ✅ Redirect based on role after successful login
-=======
-        
-        // Store doctor information in localStorage if doctor role
+
         if (role === "doctor") {
-          // Extract doctor info from response or use clean name from email
           const doctorName = response.data.name || extractNameFromEmail(email);
           const doctorQualification = response.data.qualification || "MBBS, MD (Medicine), MCPS";
           
-          // Save doctor data to localStorage
           localStorage.setItem("doctorData", JSON.stringify({
             name: doctorName,
             qualification: doctorQualification
           }));
+        } else {
+          const userData = {
+            name: response.data.user.name,
+            email: response.data.user.email,
+            role: response.data.role,
+          };
+          localStorage.setItem("user", JSON.stringify(userData));
         }
 
-        // Redirect based on role after successful login
->>>>>>> bd1a4280fa9d86939dcce5e164721b171c1409bc
         setTimeout(() => {
           if (role === "user") {
             navigate("/admindashboard");
           } else {
             navigate("/doctordashboard");
           }
-        }, 1000); // Reduced delay for quicker navigation
+        }, 1000);
       } else {
         setMessage("❌ " + response.data.message);
       }
@@ -94,7 +69,6 @@ const LoginPage = () => {
       setMessage(`❌ Login failed. Try again. ${error.response?.data?.message || error.message}`);
     }
   };
-  
 
   return (
     <div
@@ -108,7 +82,6 @@ const LoginPage = () => {
           <h2 className="text-center text-3xl font-semibold font-italic text-black mt-2">Login</h2>
           <h5 className="text-center text-xl text-gray-900 font-semibold text-black">({role} login)</h5>
 
-          {/* Role Selection */}
           <div className="flex justify-center space-x-4 mt-8">
             <button
               className={`${
@@ -128,11 +101,9 @@ const LoginPage = () => {
             </button>
           </div>
 
-          {/* Display Login Message */}
           {message && <p className="text-center text-red-500">{message}</p>}
 
           <form className="mt-8 space-y-6" onSubmit={handleLogin}>
-            {/* Email Input */}
             <div>
               <label htmlFor="email" className="sr-only">Email Address</label>
               <input
@@ -147,7 +118,6 @@ const LoginPage = () => {
               />
             </div>
 
-            {/* Password Input */}
             <div>
               <label htmlFor="password" className="sr-only">Password</label>
               <input
@@ -162,7 +132,6 @@ const LoginPage = () => {
               />
             </div>
 
-            {/* Submit Button */}
             <div>
               <button
                 type="submit"
@@ -173,7 +142,6 @@ const LoginPage = () => {
             </div>
           </form>
 
-          {/* Forgot Password and Create Account Links */}
           <div className="flex justify-between mt-4">
             <Link to="/forgotpassword" className="text-sm mt-2 mb-8 text-green-900 hover:text-green-800 font-semibold">
               Forgot Password?
